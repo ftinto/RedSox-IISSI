@@ -1,31 +1,33 @@
-h1 {
-    color: #52ffa5;
-    text-align: center;
-}
 .pagosContent {
 
 }
 .pagoPendiente, .pagoUrgente, .pagoExpirado {
     display: inline-block;
     margin: 8px;
-    width: 20%;
-    border-color: black;
+    width: 250px;
+    background-color: #f4f4f4;
     border: solid 3px;
+    border-color: #e0e0e0;
 }
 
 .tituloPago, .infoPago, .fechaLimitePago {
     display: inline-block;
 }
 
-#pagoPendiente1{
+.tituloPago {
+    margin:0px;
+}
+
+.contenidoPago {
+    margin: 8px 18px;
 
 }
-.tituloPago {
-    color: #52ffa5;
-}
-.infoPago {
-    color: #52ffa5;
-}
-.fechaLimitePago {
-    color: #52ffa5;
+
+.pestanaFechaInicioPago {
+    background-color: #e5e5e5;
+    padding: 8px;
+    width: 95px;
+    border-right: solid 3px;
+    border-bottom: solid 3px;
+    border-color: #f0f0f0;
 }

@@ -6,12 +6,6 @@
     margin: 8px;
     width: 250px;
     background-color: #f4f4f4;
-    border: solid 3px;
-    border-color: #e0e0e0;
-}
-
-.tituloPago, .infoPago, .fechaLimitePago {
-    display: inline-block;
 }
 
 .tituloPago {
@@ -30,4 +24,23 @@
     border-right: solid 3px;
     border-bottom: solid 3px;
     border-color: #f0f0f0;
+}
+
+
+.pagoPendiente {
+    border: solid 3px;
+    border-color: #e0e0e0;
+}
+
+.fechaLimiteExpirada {
+    color: red;
+}
+.pagoExpirado {
+    border: solid 3px;
+    border-color: #e0e0e0;
+}
+
+.pagoUrgente {
+    border: solid 3px;
+    border-color: #ffd46f;
 }

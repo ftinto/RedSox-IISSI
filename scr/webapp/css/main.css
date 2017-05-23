@@ -1,0 +1,47 @@
+body {
+    background-image: url("../images/background.jpg");
+}
+
+a{
+    text-decoration: none;
+}
+
+.pageContainer {
+    background-color: rgba(255,255,255,0.7);
+    padding: 15px;
+    width: 90%;
+    margin: 25px auto;
+    height: 100%;
+}
+
+.banner {
+    padding: 1px;
+    margin: 1px;
+}
+
+.tituloBanner, .logoRedSox{
+    display: inline-block;
+}
+
+.tituloBanner {
+    color: #c42d2d;
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: Calibri;
+    margin-bottom: 30px;
+}
+
+
+.logoImage {
+    height: 120px;
+    width: 120px;
+}
+
+.menuButton {
+    height: 50px;
+}
+
+.menuButton, .navigationMenu {
+    background-color: #2b353e;
+    display: inline-block;
+}

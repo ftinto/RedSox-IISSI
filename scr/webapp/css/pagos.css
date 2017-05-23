@@ -2,12 +2,21 @@ h1 {
     color: #52ffa5;
     text-align: center;
 }
-#pagosContent {
+.pagosContent {
 
 }
-.pagoPendiente, .pagoUrgente, .pagoExpirado, .tituloPago, .infoPago, .fechaLimitePago {
-    display: table-cell;
+.pagoPendiente, .pagoUrgente, .pagoExpirado {
+    display: inline-block;
+    margin: 8px;
+    width: 20%;
+    border-color: black;
+    border: solid 3px;
 }
+
+.tituloPago, .infoPago, .fechaLimitePago {
+    display: inline-block;
+}
+
 #pagoPendiente1{
 
 }

@@ -7,8 +7,7 @@ a{
 }
 
 .pageContainer {
-    background-color: rgba(255,255,255,0.7);
-    padding: 15px;
+    padding: 0px;
     width: 90%;
     margin: 25px auto;
     height: 100%;
@@ -16,7 +15,7 @@ a{
 
 .banner {
     padding: 1px;
-    margin: 1px;
+    margin: 15px;
 }
 
 .tituloBanner, .logoRedSox{
@@ -28,7 +27,6 @@ a{
     font-size: 50px;
     font-weight: bolder;
     font-family: Calibri;
-    margin-bottom: 30px;
 }
 
 
@@ -37,11 +35,38 @@ a{
     width: 120px;
 }
 
-.menuButton {
-    height: 50px;
+.mainNavigator {
+    background-color: #2b353e;
+    margin: 0%;
+    padding: 0px;
+    width: 100%;
+
 }
 
-.menuButton, .navigationMenu {
-    background-color: #2b353e;
-    display: inline-block;
+.navButtons, .navButton, .navSelect{
+    display: inline;
+}
+.menuButtons {
+    width: 50%;
+    padding:10px;
+}
+
+.navButton, .navSelect {
+    padding: 10px 15px;
+    font-family: Calibri;
+    font-size: 20px;
+}
+.navSelect {
+    color: #e4e9eb
+}
+.navButton {
+    color: #cfcfd5;
+}
+
+.navButton:hover, .navSelect:hover {
+    background-color: #3d4c59;
+}
+
+.content {
+    background-color: rgba(255,255,255,0.7);
 }

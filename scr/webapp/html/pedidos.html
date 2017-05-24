@@ -2,36 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pedidos - Red Sox</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/pedidos.css">
+    <title>Inicio - Red Sox</title>
 </head>
 <body>
-<div class="content">
-    <h1>Pedidos Pendientes</h1>
-    <div id=pedidosContent>
-        <div id="pedido1" class="pedidoActivo">
-            <h3 class="producto"></h3>
-            <div class="contenidoPedido">
-                <div class="precioEnPedidos"></div>
-                <div class="contentFechaEnPedidos">
-                    <h4 class="tituloFechaPedidos">FECHA LÍMITE</h4>
-                    <div class="fechaLimiteEnPedidos"></div>
-                </div>
-            </div>
+<div class="pageContainer">
+    <div class="banner">
+        <div class="logoRedSox">
+            <a href="index.html">
+                <img src="../images/logoRedSox.png" class="logoImage">
+            </a>
         </div>
-            <div id="pedido2" class="pedidoCerrado">
-                <h3 class="producto"></h3>
-                <div class="contenidoPedido">
-                    <div class="precioEnPedidos"></div>
-                    <div class="contentFechaEnPedidos">
-                        <h4 class="tituloFechaPedidos">FECHA LÍMITE</h4>
-                        <div class="fechaLimiteEnPedidos"></div>
+        <a href="index.html" class="tituloBanner">
+            CLUB DE BÉISBOL Y SÓFBOL DE SEVILLA
+        </a>
+    </div>
+    <div class="mainNavigator">
+        <div class="menuButtons">
+            <ul class="navButtons">
+                <a href="index.html">
+                    <li class="navSelect">Inicio</li>
+                </a>
+                <a href="index.html">
+                    <li class="navButton">Partidos</li>
+                </a>
+                <a href="pagos.html">
+                    <li class="navButton">Pagos</li>
+                </a>
+                <a href="pedidos.html">
+                    <li class="navButton">Pedidos</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="pageTitle">
+            Pedidos
+        </div>
+        <div class="contenidoInicio">
+
+            <div class="pedidosContent">
+                <div id="pedidoActivo1" class="pedidoActivo">
+                    <div class="pestanaFechaInicioPedido">10/12/2017</div>
+                    <div class="contenidoPedido">
+                        <h3 class="tituloPedido">Bate</h3>
+                        <p class="infoPedido">Proveedor: Deportes Sevilla</p>
+                        <p class="infoPedido">40€</p>
+                        <p class="infoPedido">Localizador: 234</p>
+                        <p class="fechaLimitePedido">Fecha Límite: 11/01/2018</p>
+                    </div>
+                </div>
+                <div id="pedidoCerrado1" class="pedidoCerrado">
+                    <div class="pestanaFechaInicioPedido">10/12/2017</div>
+                    <div class="contenidoPedido">
+                        <h3 class="tituloPedido">Gorra</h3>
+                        <p class="infoPedido">Proveedor: Deportes Sevilla</p>
+                        <p class="infoPedido">10€</p>
+                        <p class="infoPedido">Localizador: 234</p>
+                        <p class="fechaLimitePedido">Fecha Límite: 30/12/2017</p>
+                    </div>
+                </div>
+                <div id="pedidoCerrado2" class="pedidoCerrado">
+                    <div class="pestanaFechaInicioPedido">01/02/2017</div>
+                    <div class="contenidoPedido">
+                        <h3 class="tituloPedido">Bola de baseball</h3>
+                        <p class="infoPedido">Proveedor: Deportes Sevilla</p>
+                        <p class="infoPedido">20€</p>
+                        <p class="infoPedido">Localizador: 234</p>
+                        <p class="fechaLimitePedido">Fecha Límite: 20/02/2017</p>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-
 </div>
 </body>
 </html>
-
-

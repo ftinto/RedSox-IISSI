@@ -1,0 +1,37 @@
+.pedidosContent {
+
+}
+.pedidoActivo, .pedidoCerrado{
+    display: inline-block;
+    margin: 8px;
+    width: 250px;
+    background-color: #f4f4f4;
+}
+
+.tituloPedido{
+    margin:0px;
+}
+
+.contenidoPedido {
+    margin: 8px 18px;
+
+}
+
+.pestanaFechaInicioPedido {
+    background-color: #e5e5e5;
+    padding: 8px;
+    width: 95px;
+    border-right: solid 3px;
+    border-bottom: solid 3px;
+    border-color: #f0f0f0;
+}
+
+
+.pedidoActivo {
+    border: solid 3px;
+    border-color: #e0e0e0;
+}
+
+.pedidoActivo {
+    color: red;
+}

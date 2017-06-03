@@ -1,6 +1,4 @@
-.pedidosContent {
 
-}
 .pedidoActivo, .pedidoCerrado{
     display: inline-block;
     margin: 8px;
@@ -34,4 +32,14 @@
 
 .pedidoActivo {
     color: red;
+}
+
+#solicitudButton{
+    padding: 8px;
+    width: 10px;
+    margin-right: 20%;
+}
+
+.botonVerSolicitudes{
+    display: inline;
 }

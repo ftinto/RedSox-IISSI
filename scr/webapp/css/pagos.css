@@ -32,7 +32,7 @@
     border-color: #e0e0e0;
 }
 
-.fechaLimiteExpirada {
+.fechaLimiteExpirado {
     color: red;
 }
 .pagoExpirado {
@@ -43,4 +43,9 @@
 .pagoUrgente {
     border: solid 3px;
     border-color: #ffd46f;
+}
+
+.mensajenulo{
+	color: #9a413a;
+    font-size: 26px;
 }

@@ -1,11 +1,11 @@
-#formCreaSolicitud{
-    display: inline-block;
-    margin: 8px;
-    width: 250px;
-    background-color: #f4f4f4;
-}
-
-#contenidoSolicitud {
-   
-
+div {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
 }

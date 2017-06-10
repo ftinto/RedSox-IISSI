@@ -42,7 +42,7 @@ function introducirBotonNavegacion(numeroBoton, ultimoBoton){
     var button = null;
     if(numeroBoton == paginaSeleccionada){
         button = document.createElement("button");
-        button.className = 'botonPaginacionSeleccionado';
+        button.className = 'botonPaginacionSeleccionado button';
         /*button.addEventListener("click", function(){
             cambiarPaginaSeleccionada(numeroBoton);
         }, false);*/
@@ -59,21 +59,21 @@ function introducirBotonNavegacion(numeroBoton, ultimoBoton){
             contenedor.appendChild(button);
         } else if(numeroBoton == 1){
             button = document.createElement("button");
-            button.className = 'botonPaginacion';
+            button.className = 'botonPaginacion button';
             button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
             var node = document.createTextNode('Primera Página');
             button.appendChild(node);
             contenedor.appendChild(button);
         } else if(numeroBoton == ultimoBoton){
             button = document.createElement("button");
-            button.className = 'botonPaginacion';
+            button.className = 'botonPaginacion button';
             button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
             var node = document.createTextNode('Última Página');
             button.appendChild(node);
             contenedor.appendChild(button);
         } else if(numeroBoton != 0){
             button = document.createElement("button");
-            button.className = 'botonPaginacion';
+            button.className = 'botonPaginacion button';
             button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
             var node = document.createTextNode(numeroBoton);
             button.appendChild(node);

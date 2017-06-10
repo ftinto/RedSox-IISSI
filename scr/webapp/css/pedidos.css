@@ -40,20 +40,6 @@
     color: red;
 }
 
-.button {
-    background-color: #c42d2d;
-    border: none;
-    color: white;
-    padding: 2px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
 
 .button1 {
     background-color: #c42d2d;
@@ -61,19 +47,9 @@
     border: 2px solid #c42d2d;
 }
 
-.button1:hover {
-    background-color: firebrick;
-    color: black;
-}
-
 .button2 {
     margin-top: 2em;
     background-color: #c42d2d;
     color: white;
     border: 2px solid #c42d2d;
-}
-
-.button2:hover {
-    background-color: firebrick;
-    color: black;
 }

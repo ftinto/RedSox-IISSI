@@ -85,3 +85,17 @@ div {
 .mensajeNulo {
 	font-size: 60px;
 }
+
+.seleccionPaginacion{
+    margin: 15px 0px;
+}
+
+.botonPaginacionSeleccionado, .botonPaginacion{
+    margin: 0px 3px;
+}
+.suspensivosPaginacion{
+    margin: 0px 4px;
+}
+.botonPaginacionSeleccionado{
+    border: 1px solid #0000ff;
+}

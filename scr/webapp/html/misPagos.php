@@ -7,6 +7,7 @@ require_once ("../php/pagosUsuario.php");
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/pagos.css">
+        <script type="text/javascript" src="../javascript/Pagos/paginacion.js"></script>
 		<title>Inicio - Red Sox</title>
 	</head>
 	<body>
@@ -48,12 +49,14 @@ require_once ("../php/pagosUsuario.php");
 					Pagos
 				</div>
 				<div class="contenidoInicio">
-					<div class="pagosContent">
+                    <p>Tienes <?= $numeroDePagos?> pagos pendientes.</p>
+					<div class="pagosContent" id="pagosContent">
 						<?php
 						if(isset($resultado[0])){
+						    $numeroPago = 0;
 						foreach ($resultado as $fila) {
 						?>
-						<div id="pago<?= getEstadoPago($fila)?>1" class="pago<?= getEstadoPago($fila)?>">
+						<div id="pago<?= $numeroPago?>" class="pago<?= getEstadoPago($fila)?>" >
 							<div class="pestanaFechaInicioPago">
 								<?= $fila["FECHAINICIO"]?>
 							</div>
@@ -72,11 +75,15 @@ require_once ("../php/pagosUsuario.php");
 							</div>
 						</div>
 						<?php
+                            $numeroPago = $numeroPago + 1;
 						}
 						} else{
 						?>
 						<p class="mensajenulo">No tienes ningún pago pendiente.</p>
 						<?php }?>
+                        <script>
+                            paginacionPagos(<?= $numeroDePagos?>)
+                        </script>
 					</div>
 				</div>
 			</div>

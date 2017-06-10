@@ -10,6 +10,8 @@ FROM PAGOS WHERE dni=:data");
 	cerrarConexionBD($conexion);
 	return $resultado;
 }
+
+
 function filtrarPagosLiquidados($pagos){
 	$res = array();
 	$index = 0;

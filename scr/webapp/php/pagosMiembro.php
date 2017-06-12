@@ -42,7 +42,6 @@ function getEstadoPago($pago){
 	$fechaLimite = getObjetoFecha($pago["FECHALIMITE"]);
 	$localtime = new DateTime('NOW');
 	$diff = compararFechas($localtime, $fechaLimite);
-	$res;
 	if($diff <= 0){
 		$res = 'Expirado';
 	} else if($diff <= 7 ){
@@ -55,7 +54,7 @@ function getEstadoPago($pago){
 
 
 function esPagoLiquidado($pago){
-	$res;	
+    $res = "SI";
 	if(is_null($pago['FECHALIQUIDACION'])){
 		$res = "NO";
 	} else {

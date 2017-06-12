@@ -12,48 +12,17 @@ require_once ("../php/pagosUsuario.php");
 	</head>
 	<body>
 		<div class="pageContainer">
-			<div class="banner">
-				<div class="logoRedSox">
-					<a href="index.html"> <img src="../images/logoRedSox.png" class="logoImage"> </a>
-				</div>
-				<a href="index.html" class="tituloBanner"> CLUB DE BÉISBOL Y SÓFBOL DE SEVILLA </a>
-			</div>
-			<div class="mainNavigator">
-				<div class="menuButtons">
-					<ul class="navButtons">
-						<a href="index.html">
-						<li class="navSelect">
-							Inicio
-						</li></a>
-						<a href="index.html">
-						<li class="navButton">
-							Partidos
-						</li></a>
-						<a href="pagos.html">
-						<li class="navButton">
-							Pagos
-						</li></a>
-						<a href="pedidos.html">
-						<li class="navButton">
-							Pedidos
-						</li></a>
-						<a href="admin.html">
-						<li class="navButton">
-							Admin
-						</li></a>
-					</ul>
-				</div>
-			</div>
+            <?php include_once ("includes/header.php")?>
 			<div class="content">
 				<div class="pageTitle">
 					Pagos
 				</div>
 				<div class="contenidoInicio">
-                    <p>Tienes <?= $numeroDePagos?> pagos pendientes.</p>
 					<div class="pagosContent" id="pagosContent">
 						<?php
-						if(isset($resultado[0])){
-						    $numeroPago = 0;
+						if(isset($resultado[0])){?>
+                            <p>Tienes <?= $numeroDePagos?> pagos pendientes.</p>
+						   <?php $numeroPago = 0;
 						foreach ($resultado as $fila) {
 						?>
 						<div id="pago<?= $numeroPago?>" class="pago<?= getEstadoPago($fila)?>" >

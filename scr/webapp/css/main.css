@@ -70,6 +70,7 @@ a{
 .content {
     background-color: rgba(255,255,255,0.7);
     padding:45px;
+    overflow-x:auto;
 }
 
 .pageTitle {
@@ -120,4 +121,30 @@ div {
 .botonPaginacionSeleccionado{
     background-color: #851f1f;
     border: 2px solid #851f1f;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2
+}
+tr:nth-child(odd) {background-color: #ffffff
+}
+
+.tablaPrincipal {
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+.tablaPrincipal, .tablaPrincipal > tbody > tr > td{
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.tablaPrincipal > thead > tr > th{
+    background-color: #2b353e;
+    color: white;
+    border: 2px solid #586e81;
+    padding: 10px;
+}
+
+.mensajeOperacion {
+    color: red;
 }

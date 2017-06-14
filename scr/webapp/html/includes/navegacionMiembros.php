@@ -4,6 +4,6 @@
     <button class="button">Crear Entrenador</button>
     <button class="button">Crear Jugador</button>
     <button class="button">Crear Empleado</button>
-    <button class="button">Crear Usuario</button>
+    <button class="button">Crear Usuarios</button>
     <button class="button">Modificar Permisos</button>
 </div>

@@ -17,13 +17,7 @@ require_once ("../php/phpAdmin/Miembros/consultaMiembros.php");
             Gestión de Miembros
         </div>
         <div class="contenidoInicio">
-            <?php if(isset($_REQUEST['mensajeOperacion'])) {
-                if($_REQUEST['mensajeOperacion'] == 'eliminarMiembroCancelado'){
-                    $mensajeOperacion = 'Has cancelado el borrado del miembro';
-                }
-            ?>
-            <p class="mensajeOperacion"><?=$mensajeOperacion?></p>
-            <?php }?>
+            <?php include_once("includes/mensajeOperacion.php") ?>
             <?php include_once("includes/navegacionMiembros.php") ?>
             <div class="contendorTablaPrincipal">
                 <table class="tablaPrincipal">
@@ -46,7 +40,10 @@ require_once ("../php/phpAdmin/Miembros/consultaMiembros.php");
                             <td><?= $fila["TELEFONO"]?></td>
                             <td><?= $fila["TIPOMIEMBRO"]?></td>
                             <td>
-                                <button class="button">Perfil</button>
+                                <form style="display: inline-block" method="post" action="perfilMiembro.php">
+                                    <input type="hidden" name="dniMiembro" value="<?=$fila["DNI"]?>">
+                                    <button class="button">Perfil</button>
+                                </form>
                                 <button class="button">Ver Pagos</button>
                                 <button class="button" onclick="alertaEliminarMiembroSeleccionado(<?=$numeroMiembro?>)">Eliminar</button>
                                 <form style="display: inline-block" method="post" action="../php/phpAdmin/Miembros/eliminarMiembro.php">

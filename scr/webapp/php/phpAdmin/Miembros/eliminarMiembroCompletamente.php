@@ -12,7 +12,7 @@ if(isset($_REQUEST['dni'])){
             eliminarPago($pago["IDPAGO"]);
         }
         eliminarMiembroDni($dniMiembro);
-        header("Location: ../../../html/gestionMiembros.php");
+        header("Location: ../../../html/gestionMiembros.php?mensajeOperacion=miembroEliminado");
     }
 } else {
     echo "Ha ocurrido un fallo en la selección del miembro a borrar";

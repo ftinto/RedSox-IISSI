@@ -25,13 +25,32 @@ function getAnoFecha($fecha){
 
 function compararFechas($fecha1, $fecha2){
 	$diff =$fecha1 ->diff($fecha2);
-	$res;
 	if($diff->invert == 0){
 		$res = $diff->days;
 	} else{
 		$res= -1;
 	}
 	return $res;
+}
+
+function getStringSQLFecha($dia, $mes, $anio){
+    if(!($dia=='') && !($mes=='') && !($anio=='')){
+        $res = $dia.'/'.$mes.'/'.$anio;
+    } else {
+        $res = null;
+    }
+    return $res;
+}
+
+function getAniosDesde($fecha){
+    $fecha2 = new DateTime('now');
+    $diff =$fecha ->diff($fecha2);
+    if($diff->invert == 0){
+        $res = $diff->y;
+    } else{
+        $res= -1;
+    }
+    return $res;
 }
 
 ?>

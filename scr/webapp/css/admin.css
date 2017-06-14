@@ -39,3 +39,36 @@
     border-top: 1px solid #afafaf;
     border-bottom: 1px solid #afafaf;
 }
+
+.nombreMiembro{
+    border: 2px solid #afafaf;
+    background-color: #3d4c59;
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+}
+
+.tituloSeccionPerfil{
+    border-bottom: 1px solid #afafaf;
+    font-size: 25px;
+    margin: 20px 0px 0px 0px;
+}
+
+.seccionPerfil{
+    margin: 0px 0px 8px 0px;
+    background-color: #f4f4f4;
+    border:2px solid #e0e0e0;
+    padding:20px;
+    position:relative;
+}
+
+.subSeccionPerfil{
+    display:inline-block;
+    margin: 0px 40px 0px 40px;
+}
+.nombreDato{
+    font-weight: bold;
+}
+.contenedorDato{
+    margin:5px;
+}

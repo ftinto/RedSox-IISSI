@@ -12,6 +12,69 @@ function alertaEliminarMiembroSeleccionado(numeroMiembro){
     }
 }
 
+function alertaEliminarMiembroDesdePerfil(){
+    var nombre = document.getElementById('nombreMiembro');
+    var dni = document.getElementById('dniMiembro')
+    var nombreTexto = nombre.textContent;
+    var dniTexto = dni.textContent;
+    var formularioEliminar = document.getElementById('formularioEliminarMiembroPerfil')
+    var aceptado = alertaEliminarMiembro(nombreTexto, dniTexto);
+    if(aceptado){
+        formularioEliminar.submit();
+    }
+}
+
+function alertaEliminarEmpleadoDesdePerfil(){
+    var nombre = document.getElementById('nombreMiembro');
+    var dni = document.getElementById('dniMiembro')
+    var nombreTexto = nombre.textContent;
+    var dniTexto = dni.textContent;
+    var formularioEliminar = document.getElementById('formularioEliminarEmpleadoPerfil')
+    var aceptado = alertaEliminarEmpleado(nombreTexto, dniTexto);
+    if(aceptado){
+        formularioEliminar.submit();
+    }
+}
+
+function alertaEliminarEmpleado(nombre,dni){
+    var a = confirm('¿Está seguro de que quiere que el miembro '+nombre+' con DNI '+dni+' deje de ser un empleado?');
+    return a;
+}
+
+function alertaEliminarEntrenadorDesdePerfil(){
+    var nombre = document.getElementById('nombreMiembro');
+    var dni = document.getElementById('dniMiembro')
+    var nombreTexto = nombre.textContent;
+    var dniTexto = dni.textContent;
+    var formularioEliminar = document.getElementById('formularioEliminarEntrenadorPerfil')
+    var aceptado = alertaEliminarEntrenador(nombreTexto, dniTexto);
+    if(aceptado){
+        formularioEliminar.submit();
+    }
+}
+
+function alertaEliminarEntrenador(nombre,dni){
+    var a = confirm('¿Está seguro de que quiere que el miembro '+nombre+' con DNI '+dni+' deje de ser un entrenador?');
+    return a;
+}
+
+function alertaEliminarJugadorDesdePerfil(){
+    var nombre = document.getElementById('nombreMiembro');
+    var dni = document.getElementById('dniMiembro')
+    var nombreTexto = nombre.textContent;
+    var dniTexto = dni.textContent;
+    var formularioEliminar = document.getElementById('formularioEliminarJugadorPerfil')
+    var aceptado = alertaEliminarJugador(nombreTexto, dniTexto);
+    if(aceptado){
+        formularioEliminar.submit();
+    }
+}
+
+function alertaEliminarJugador(nombre,dni){
+    var a = confirm('¿Está seguro de que quiere que el miembro '+nombre+' con DNI '+dni+' deje de ser un jugador?');
+    return a;
+}
+
 function alertaEliminarMiembro(nombre,dni){
     var a = confirm('¿Está seguro de que quiere eliminar al miembro '+nombre+' con DNI '+dni+'?');
     return a;

@@ -1,5 +1,7 @@
 body {
     background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 a{
@@ -147,4 +149,9 @@ tr:nth-child(odd) {background-color: #ffffff
 
 .mensajeOperacion {
     color: red;
+}
+
+.tituloInput{
+    font-weight: bold;
+    margin: 5px 0px;
 }

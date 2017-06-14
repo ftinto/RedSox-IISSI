@@ -44,7 +44,7 @@ function getStringSQLFecha($dia, $mes, $anio){
 
 function getAniosDesde($fecha){
     $fecha2 = new DateTime('now');
-    $diff =$fecha ->diff($fecha2);
+    $diff = $fecha ->diff($fecha2);
     if($diff->invert == 0){
         $res = $diff->y;
     } else{

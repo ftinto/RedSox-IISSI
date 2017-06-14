@@ -31,6 +31,16 @@
         $mensajeOperacion = 'Se ha editado al jugador correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'miembroEditado'){
         $mensajeOperacion = 'Se ha editado al miembro correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'empleadoCreado'){
+        $mensajeOperacion = 'Se ha creado al empleado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'entrenadorCreado'){
+        $mensajeOperacion = 'Se ha creado al entrenador correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'jugadorCreado'){
+        $mensajeOperacion = 'Se ha creado al jugador correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'miembroCreado'){
+        $mensajeOperacion = 'Se ha creado al miembro correctamente.';
+    } else{
+        $mensajeOperacion = 'Mensaje sin definir recibido.';
     }
     ?>
     <p class="mensajeOperacion"><?=$mensajeOperacion?></p>

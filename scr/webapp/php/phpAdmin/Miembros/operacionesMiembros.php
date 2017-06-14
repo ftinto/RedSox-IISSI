@@ -170,6 +170,8 @@ function convertirAJugador($dni,$categoria, $posicion, $federado){
     cerrarConexionBD($conexion);
 }
 
+
+
 function esJugadorAptoCategoria($dni,$categoria){
     require_once (dirname(dirname(dirname(__FILE__))).'\funcionesTipos\funcionesFechas.php');
     $miembro = obtenerMiembro($dni)[0];
@@ -182,6 +184,22 @@ function esJugadorAptoCategoria($dni,$categoria){
     }
     return $res;
 }
+
+
+function esJugadorAptoCategoriaRecibeFecha($fechaNacimiento,$categoria){
+    require_once (dirname(dirname(dirname(__FILE__))).'\funcionesTipos\funcionesFechas.php');
+    $fecha = getObjetoFecha($fechaNacimiento);
+    $edad = getAniosDesde($fecha);
+    if( (($categoria=='sub-21') && ($edad>21)) || (($categoria=='sub-19') && ($edad>19))){
+        $res = 'NO';
+    } else{
+        $res = 'SI';
+    }
+    return $res;
+}
+
+
+
 
 function eliminarEmpleado($dni){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
@@ -278,13 +296,82 @@ function editarMiembro($olddni, $nombre, $email, $fechaNacimiento, $direccion, $
     $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,?,?,?,?,?)");
     $stmt->bindParam(1, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $nombre, PDO::PARAM_STR, 4000);
-    $stmt->bindParam(3, $email, PDO::PARAM_STR, 4000);
-    $stmt->bindParam(4, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $email, PDO::PARAM_STR, 4000);
     $stmt->bindParam(5, $direccion, PDO::PARAM_STR, 4000);
     $stmt->bindParam(6, $telefono, PDO::PARAM_STR, 4000);
     $stmt->bindParam(7, $parcheTipo, PDO::PARAM_STR, 4000);
     $stmt -> execute();
     cerrarConexionBD($conexion);
 }
+
+
+function crearEmpleado($dni, $puesto,$fechaInicio,$fechaFin,$directiva, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL CREAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $puesto, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $fechaInicio, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $fechaFin, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(5, $directiva, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(6, $nombre, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(7, $email, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(8, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(9, $direccion, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(10, $telefono, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+function crearEntrenador($dni, $categoria, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL CREAR_ENTRENADOR(?,?,?,?,?,?,?)");
+    $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $categoria, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $nombre, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $email, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(5, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(6, $direccion, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(7, $telefono, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+function crearJugador($dni,$categoria, $posicion, $federado, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL CREAR_JUGADOR(?,?,?,?,?,?,?,?,?)");
+    $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $categoria, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $posicion, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $federado, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(5, $nombre, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(6, $email, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(7, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(8, $direccion, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(9, $telefono, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+function crearMiembro($dni, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $parcheTipo = 'afiliado';
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,?,?,?,?,?)");
+    $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $nombre, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $email, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(5, $direccion, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(6, $telefono, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(7, $parcheTipo, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+
 
 ?>

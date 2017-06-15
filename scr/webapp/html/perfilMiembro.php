@@ -232,7 +232,10 @@
                 <div class="seccionPerfil otraInformacion">
                     <div class="subSeccionPerfil">
                         <div class="contenedorDato">
-                            <button class="button">Ver Pagos</button>
+                            <form style="display: inline-block" method="post" action="perfilPagos.php">
+                                <input type="hidden" name="dni" value="<?=$dniMiembro?>">
+                                <button class="button">Ver Pagos</button>
+                            </form>
                         </div>
                     </div>
                     <div class="subSeccionPerfil">

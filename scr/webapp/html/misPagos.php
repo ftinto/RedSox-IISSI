@@ -24,13 +24,14 @@ require_once ("../php/pagosUsuario.php");
                             <p>Tienes <?= $numeroDePagos?> pagos pendientes.</p>
 						   <?php $numeroPago = 0;
 						foreach ($resultado as $fila) {
+						    require_once('../php/phpAdmin/Pagos/operacionesPagos.php');
 						?>
 						<div id="pago<?= $numeroPago?>" class="pago<?= getEstadoPago($fila)?>" >
 							<div class="pestanaFechaInicioPago">
 								<?= $fila["FECHAINICIO"]?>
 							</div>
 							<div class="contenidoPago">
-								<h3 class="tituloPago">Mensual Diciembre</h3>
+								<h3 class="tituloPago"><?=getNombrePago($fila)?></h3>
 								<p class="infoPago">
 									<?= $fila["CUANTIA"]?>€
 								</p>

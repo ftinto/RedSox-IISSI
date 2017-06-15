@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="admin/gestionPartidos.php">
+                <a href="gestionPartidos.php">
                     <div class="botonAdmin" style="background-image: url(../images/botonPartidosAdmin.jpg);">
                         <div class="upperSection">
                             <div class="bottomSection" style="background-image: url(../images/textoPartidos.png);">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="admin/gestionPedidos.php">
+                <a href="gestionPedidos.php">
                     <div class="botonAdmin" style="background-image: url(../images/botonPedidosAdmin.jpg);">
                         <div class="upperSection">
                             <div class="bottomSection" style="background-image: url(../images/textoPedidos.png);">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="admin/gestionPagos.php">
+                <a href="gestionPagos.php">
                     <div class="botonAdmin" style="background-image: url(../images/botonPagosAdmin.jpg);">
                         <div class="upperSection">
                             <div class="bottomSection" style="background-image: url(../images/textoPagos.png);">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="admin/gestionVotaciones.php">
+                <a href="gestionVotaciones.php">
                     <div class="botonAdmin" style="background-image: url(../images/botonVotacionesAdmin.jpg);">
                         <div class="upperSection">
                             <div class="bottomSection" style="background-image: url(../images/textoVotaciones.png);">

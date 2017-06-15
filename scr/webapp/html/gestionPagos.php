@@ -6,8 +6,7 @@ require_once ("../php/phpAdmin/Miembros/consultaMiembros.php");
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
-    <script type="text/javascript" src="../javascript/Admin/operacionesMiembros.js"></script>
-    <title>Gestión de Miembros - Red Sox</title>
+    <title>Gestión de Pagos - Red Sox</title>
 </head>
 <body>
 <div class="pageContainer">
@@ -18,15 +17,16 @@ require_once ("../php/phpAdmin/Miembros/consultaMiembros.php");
         </div>
         <div class="contenidoInicio">
             <?php include_once("includes/mensajeOperacion.php") ?>
-            <?php include_once("includes/navegacionMiembros.php") ?>
+            <?php include_once("includes/navegacionPagos.php") ?>
+            <?php require_once("../php/phpAdmin/Miembros/operacionesMiembros.php") ?>
+            <?php require_once("../php/phpAdmin/Pagos/operacionesPagos.php") ?>
             <div class="contendorTablaPrincipal">
                 <table class="tablaPrincipal">
                     <thead><tr role="row">
                         <th>Nombre</th>
                         <th>DNI</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Tipo Miembro</th>
+                        <th>Pagos Pendientes</th>
+                        <th>Cuantía Total Pendiente</th>
                         <th></th>
                     </tr> </thead>
                     <tbody>
@@ -36,25 +36,17 @@ require_once ("../php/phpAdmin/Miembros/consultaMiembros.php");
                         <tr id="miembro<?=$numeroMiembro?>">
                             <td><?= $fila["NOMBRE"]?></td>
                             <td><?= $fila["DNI"]?></td>
-                            <td><?= $fila["EMAIL"]?></td>
-                            <td><?= $fila["TELEFONO"]?></td>
-                            <td><?= $fila["TIPOMIEMBRO"]?></td>
+                            <td><?= numeroPagosPendientesMiembro($fila["DNI"])?></td>
+                            <td><?= getCuantiaTotalMiembro($fila["DNI"])?>€</td>
                             <td>
-                                <form style="display: inline-block" method="post" action="perfilMiembro.php">
-                                    <input type="hidden" name="dniMiembro" value="<?=$fila["DNI"]?>">
-                                    <button class="button">Perfil</button>
-                                </form>
                                 <form style="display: inline-block" method="post" action="perfilPagos.php">
                                     <input type="hidden" name="dni" value="<?=$fila["DNI"]?>">
                                     <button class="button">Ver Pagos</button>
                                 </form>
-                                <button class="button" onclick="alertaEliminarMiembroSeleccionado(<?=$numeroMiembro?>)">Eliminar</button>
-                                <form style="display: inline-block" method="post" action="../php/phpAdmin/Miembros/eliminarMiembro.php">
-                                    <input type="hidden" name="dni" value="<?=$fila["DNI"]?>">
-                                </form>
+
                             </td>
                         </tr>
-                    <?php
+                        <?php
                         $numeroMiembro = $numeroMiembro +1;
                     }?>
                     </tbody>

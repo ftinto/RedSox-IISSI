@@ -39,6 +39,14 @@
         $mensajeOperacion = 'Se ha creado al jugador correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'miembroCreado'){
         $mensajeOperacion = 'Se ha creado al miembro correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pagoEliminado'){
+        $mensajeOperacion = 'Se ha eliminado el pago correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pagoLiquidado'){
+        $mensajeOperacion = 'Se ha liquidado el pago correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pagosMensualesCreados'){
+        $mensajeOperacion = 'Se han creado correctamente los pagos de este mes.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pagosCreado'){
+        $mensajeOperacion = 'El pago se ha creado correctamente.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

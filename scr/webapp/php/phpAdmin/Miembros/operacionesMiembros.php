@@ -69,7 +69,7 @@ FROM ENTRENADORES WHERE dni=:data");
 }
 
 function obtenerJugador($dni){
-    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    require_once(dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
     $stmt = $conexion -> prepare("SELECT DNI, CATEGORIA, POSICION, FEDERADO
 FROM JUGADORES WHERE dni=:data");

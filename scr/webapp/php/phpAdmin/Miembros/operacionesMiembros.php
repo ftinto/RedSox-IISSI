@@ -90,6 +90,17 @@ FROM USUARIOS WHERE dni=:data");
     return $resultado;
 }
 
+function obtenerCuentaConUsuario($usuario){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT USUARIO, PASSWORD, DNI, TIPOUSUARIO
+FROM USUARIOS WHERE usuario=:data");
+    $stmt -> execute(array(':data' => $usuario));
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
 function existeMiembro($dni){
     if(count(obtenerMiembro($dni)) == 1){
         $res = 'SI';
@@ -234,6 +245,15 @@ function eliminarJugador($dni){
     cerrarConexionBD($conexion);
 }
 
+function eliminarCuenta($usuario){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion->prepare("CALL ELIMINAR_USUARIO(?)");
+    $stmt->bindParam(1, $usuario, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
 function editarEmpleado($olddni, $puesto,$fechaInicio,$fechaFin,$directiva, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $parcheIDTRABAJO = obtenerEmpleado($olddni)[0]['IDTRABAJO'];
@@ -370,6 +390,78 @@ function crearMiembro($dni, $nombre, $email, $fechaNacimiento, $direccion, $tele
     $stmt->bindParam(7, $parcheTipo, PDO::PARAM_STR, 4000);
     $stmt -> execute();
     cerrarConexionBD($conexion);
+}
+
+function filtrarMiembrosConUsuario($miembros){
+    $res = array();
+    $index = 0;
+    foreach($miembros as $fila){
+        $dni = $fila['DNI'];
+        if(existeCuenta($dni) == 'NO'){
+            $res[$index]=$fila;
+            $index = $index + 1;
+        }
+    }
+    return $res;
+}
+
+function crearUsuario($dni,$usuario, $contrasena, $tipoUsuario){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL CREARUSUARIO(?,?,?,?)");
+    $stmt->bindParam(1, $usuario, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $contrasena, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $dni, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(4, $tipoUsuario, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+function editarUsuario($usuario, $contrasena, $tipoUsuario){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("CALL EDITAR_USUARIO(?,?,?)");
+    $stmt->bindParam(1, $usuario, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(2, $contrasena, PDO::PARAM_STR, 4000);
+    $stmt->bindParam(3, $tipoUsuario, PDO::PARAM_STR, 4000);
+    $stmt -> execute();
+    cerrarConexionBD($conexion);
+}
+
+function esSesionCorrecta($usuario, $contrasena){
+    if(existeCuentaConUsuario($usuario)=='SI'){
+        if(coincideUsuarioContrasena($usuario, $contrasena)=='SI'){
+            $res = 'correcto';
+        } else if (coincideUsuarioContrasena($usuario, $contrasena)=='NO'){
+            $res = 'noCoincide';
+        } else {
+            $res = 'error';
+        }
+    } else if(existeCuentaConUsuario($usuario)=='NO'){
+        $res = 'usuarioNoExiste';
+    } else {
+        $res = 'error';
+    }
+    return $res;
+}
+
+function existeCuentaConUsuario($usuario){
+    if(count(obtenerCuentaConUsuario($usuario)) == 1){
+        $res = 'SI';
+    } else {
+        $res = 'NO';
+    }
+    return $res;
+}
+
+function coincideUsuarioContrasena($usuario, $contrasena){
+    $usuario = obtenerCuentaConUsuario($usuario);
+    if($contrasena == $usuario[0]['PASSWORD']){
+        $res = 'SI';
+    } else {
+        $res = 'NO';
+    }
+    return $res;
 }
 
 

@@ -93,6 +93,23 @@ function alertaEliminarMiembroConPagos(numeroPagos, numeroPendientes, dni){
     formulario.submit();
 }
 
+function alertaEliminarCuentaDesdePerfil(){
+    var nombre = document.getElementById('nombreMiembro');
+    var dni = document.getElementById('dniMiembro')
+    var nombreTexto = nombre.textContent;
+    var dniTexto = dni.textContent;
+    var formularioEliminar = document.getElementById('formularioEliminarCuentaPerfil')
+    var aceptado = alertaEliminarCuenta(nombreTexto, dniTexto);
+    if(aceptado){
+        formularioEliminar.submit();
+    }
+}
+
+function alertaEliminarCuenta(nombre,dni){
+    var a = confirm('¿Está seguro de que quiere eliminar la cuenta del miembro '+nombre+' con DNI '+dni+'?');
+    return a;
+}
+
 function post(path, params, method) {
     method = method || "post";
     var form = document.createElement("form");

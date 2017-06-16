@@ -47,6 +47,20 @@
         $mensajeOperacion = 'Se han creado correctamente los pagos de este mes.';
     } else if($_REQUEST['mensajeOperacion'] == 'pagosCreado'){
         $mensajeOperacion = 'El pago se ha creado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'usuariosCreados'){
+        $mensajeOperacion = 'Usuario(s) creado(s) correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'cuentaEliminada'){
+        $mensajeOperacion = 'Usuario borrado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'usuarioEditado'){
+        $mensajeOperacion = 'Usuario editado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'usuarioNoExiste'){
+        $mensajeOperacion = 'No existe ninguna cuenta con ese usuario.';
+    } else if($_REQUEST['mensajeOperacion'] == 'noCoincide'){
+        $mensajeOperacion = 'El usuario y la contraseña no coinciden.';
+    } else if($_REQUEST['mensajeOperacion'] == 'iniciarSesion'){
+        $mensajeOperacion = 'Inicia sesión para acceder.';
+    } else if($_REQUEST['mensajeOperacion'] == 'accesoNoPermitido'){
+        $mensajeOperacion = 'No tienes permiso para acceder a esta sección.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

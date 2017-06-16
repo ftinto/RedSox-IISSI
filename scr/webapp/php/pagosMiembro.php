@@ -18,8 +18,8 @@ function filtrarPagosLiquidados($pagos){
 	foreach($pagos as $fila){
 		if(esPagoLiquidado($fila) == 'NO'){
 			$res[$index]=$fila;
+            $index = $index + 1;
 		}
-		$index = $index + 1;
 	}
 	return $res;
 }

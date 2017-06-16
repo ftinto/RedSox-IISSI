@@ -7,7 +7,7 @@
 <div class="mainNavigator">
     <div class="menuButtons">
         <ul class="navButtons">
-            <a href="index.html">
+            <a href="index.php">
                 <li class="navSelect">
                     Inicio
                 </li></a>
@@ -23,10 +23,23 @@
                 <li class="navButton">
                     Pedidos
                 </li></a>
-            <a href="admin.php">
-                <li class="navButton">
-                    Admin
-                </li></a>
+
+            <?php
+            if(isset($_SESSION['usuario']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario']=='administrador'){ ?>
+                <a href="admin.php">
+                    <li class="navButton">
+                        Admin
+                    </li></a>
+            <?php } ?>
+
+            <?php
+
+            if(isset($_SESSION['usuario'])){ ?>
+                <a href="cerrarSesion.php">
+                    <li class="navButton" style="color: #c82c2f">
+                        Cerrar Sesión
+                    </li></a>
+            <?php } ?>
         </ul>
     </div>
 </div>

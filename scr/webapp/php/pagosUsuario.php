@@ -1,9 +1,7 @@
 <?php
-$dni1 = '12443898R';
-$dni2 = '25704673B';
-$dni3 = '86917931B';
+$dni = $_SESSION['dni'];
 require_once("pagosMiembro.php");
-$resultado = obtenerPagosDeMiembro($dni1);
+$resultado = obtenerPagosDeMiembro($dni);
 $resultado = filtrarPagosLiquidados($resultado);
 $resultado = ordenarPagosCronologicamente($resultado);
 $numeroDePagos =  count($resultado);

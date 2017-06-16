@@ -1,14 +1,7 @@
-<html>
-	<head>
-		<title>
-			A
-		</title>
-	</head>
-	<body>
-		<?php
-		$Yo = "Tu puta madre, Youssef";
-		echo "$Yo";
-		?>
-		<?php include 'footer.php';?>
-	</body>
-</html>
+<?php
+session_start();
+if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador'){ ?>
+
+<?php } else {
+    header("Location: index.php?mensajeOperacion=accesoNoPermitido");
+} ?>

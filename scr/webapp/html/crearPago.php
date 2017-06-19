@@ -28,13 +28,13 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                         <h2 class="tituloSeccionPerfil">Crear un pago nuevo:</h2>
                         <form class="formularioConvertir crearPago" method="post" action="../php/phpAdmin/Pagos/creandoPago.php">
                             <input type="hidden" name="dni" value="<?=$dniSeleccionado ?>">
-                            <div class="tituloInput">Cuantía:</div>
+                            <div class="tituloInput"aria-required="true">Cuantía:</div>
                             <input type="text" name="cuantia">
-                            <div class="tituloInput">Fecha Límite:</div>
+                            <div class="tituloInput"aria-required="true">Fecha Límite:</div>
                             <div class="inputsFechaInicio">
-                                Día: <input type="text" name="diaLimite">
-                                Mes: <input type="text" name="mesLimite">
-                                Año: <input type="text" name="anioLimite">
+                                Día: <input type="text" name="diaLimite" required pattern="^[0-9]{2}$">
+                                Mes: <input type="text" name="mesLimite" required pattern="^[0-9]{2}$">
+                                Año: <input type="text" name="anioLimite" required pattern="^[0-9]{4}$">
                             </div>
 
                             <p>Se creará un pago de tipo 'OTRO'.</p>

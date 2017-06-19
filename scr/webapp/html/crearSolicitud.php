@@ -51,7 +51,7 @@
                     <form action="" method="post" class="">
                         <p>Descripción<br>
                             <textarea name="your-message" cols="40" rows="10"
-                                      class=""></textarea></p>
+                                      class="" required></textarea></p>
                         ` <p><input type="submit" value="Enviar" class=""></p>
                     </form>
                 </div>

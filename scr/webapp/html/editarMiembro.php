@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador'){ ?>
+if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador') { ?>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,91 +21,96 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                 <?php include_once("includes/navegacionMiembros.php") ?>
                 <div class="contenedorConvertir">
 
-                    <?php if(isset($_REQUEST['dni']) && isset($_REQUEST['editando'])){
+                    <?php if (isset($_REQUEST['dni']) && isset($_REQUEST['editando'])) {
                         $dniSeleccionado = $_REQUEST['dni'];
                         $editando = $_REQUEST['editando'];
                         ?>
 
-                        <h2 class="tituloSeccionPerfil">Editar <?= $editando?>:</h2>
-                        <form class="formularioEditar aMiembro" method="post" action="../php/phpAdmin/Miembros/editandoMiembros.php">
-                        <input type="hidden" name="olddni" value="<?=$dniSeleccionado ?>">
-                        <input type="hidden" name="editando" value="<?= $editando?>">
+                        <h2 class="tituloSeccionPerfil">Editar <?= $editando ?>:</h2>
+                        <form class="formularioEditar aMiembro" method="post"
+                              action="../php/phpAdmin/Miembros/editandoMiembros.php">
+                        <input type="hidden" name="olddni" value="<?= $dniSeleccionado ?>">
+                        <input type="hidden" name="editando" value="<?= $editando ?>">
 
                         <div class="tituloInput">Nombre:</div>
-                        <input type="text" name="nombre">
+                        <input type="text" name="nombre" required>
                         <div class="tituloInput">Fecha de Nacimiento:</div>
                         <div class="inputsFechaInicio">
-                            Día: <input type="text" name="diaNacimiento">
-                            Mes: <input type="text" name="mesNacimiento">
-                            Año: <input type="text" name="anioNacimiento">
+                            Día: <input type="text" name="diaNacimiento" required pattern="/^\d{2}$/">
+                            Mes: <input type="text" name="mesNacimiento" required pattern="/^\d{2}$/">
+                            Año: <input type="text" name="anioNacimiento" required pattern="/^\d{4}$/">
                         </div>
                         <div class="tituloInput">Email:</div>
-                        <input type="text" name="email">
+                        <input type="text" name="email" required
+                               pattern="/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/">
                         <div class="tituloInput">Dirección:</div>
-                        <input type="text" name="direccion">
+                        <input type="text" name="direccion" required>
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono">
-
+                        <input type="text" name="telefono" required pattern="/^\(\+\d{2,3}\)\d{9,10}$/">
 
 
                         <?php
-                        if($editando == 'empleado'){ ?>
+                        if ($editando == 'empleado') { ?>
 
                             <div class="tituloInput">Nombre del Puesto:</div>
-                            <input type="text" name="puesto">
+                            <input type="text" name="puesto" required>
                             <div class="tituloInput">Fecha de Inicio:</div>
                             <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
                             <div class="inputsFechaInicio">
-                                Día: <input type="text" name="diaInicio">
-                                Mes: <input type="text" name="mesInicio">
-                                Año: <input type="text" name="anioInicio">
+                                Día: <input type="text" name="diaInicio" required pattern="/^\d{2}$/">
+                                Mes: <input type="text" name="mesInicio" required pattern="/^\d{2}$/">
+                                Año: <input type="text" name="anioInicio" required pattern="/^\d{4}$/">
                             </div>
                             <div class="tituloInput">Fecha de Fin</div>
                             <div class="inputsFechaFin">
-                                Día: <input type="text" name="diaFin">
-                                Mes: <input type="text" name="mesFin">
-                                Año: <input type="text" name="anioFin">
+                                Día: <input type="text" name="diaFin" required pattern="/^\d{2}$/">
+                                Mes: <input type="text" name="mesFin" required pattern="/^\d{2}$/">
+                                Año: <input type="text" name="anioFin" required pattern="/^\d{4}$/">
                             </div>
                             <div class="tituloInput">Pertenece a la Directiva</div>
                             <select
                                     name="directiva"
                                     id="selectTipoEmpleado"
                                     size="1..2"
-                                    title="Selección de tipo de empleado">
+                                    title="Selección de tipo de empleado" required>
 
                                 <option value="SI" selected="selected">Sí</option>
                                 <option value="NO">No</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Editar</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Editar</button>
+                            </div>
                             </form>
 
                             <?php
-                        } else if($editando == 'entrenador'){ ?>
+                        } else if ($editando == 'entrenador') { ?>
 
                             <div class="tituloInput">Categoría:</div>
                             <select
                                     name="categoria"
                                     id="selectCategoriaEntrenador"
                                     size="1..3"
-                                    title="Selección de categoría de entrenador">
+                                    title="Selección de categoría de entrenador" required>
 
                                 <option value="senior" selected="selected">Senior</option>
                                 <option value="sub-21">sub-21</option>
                                 <option value="sub-19">sub-19</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Editar</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Editar</button>
+                            </div>
                             </form>
 
 
                             <?php
-                        } else if($editando == 'jugador'){ ?>
+                        } else if ($editando == 'jugador') { ?>
 
                             <div class="tituloInput">Categoría:</div>
                             <select
                                     name="categoria"
                                     id="selectCategoriaJugador"
                                     size="1..3"
-                                    title="Selección de categoría de jugador">
+                                    title="Selección de categoría de jugador" required>
 
                                 <option value="femenino" selected="selected">femenino</option>
                                 <option value="sub-21">sub-21</option>
@@ -116,7 +121,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                     name="posicion"
                                     id="selectPosicionJugador"
                                     size="1..9"
-                                    title="Selección de posición de jugador">
+                                    title="Selección de posición de jugador" required>
 
                                 <option value="Pitcher">Pitcher</option>
                                 <option value="Catcher">Catcher</option>
@@ -133,24 +138,28 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                     name="federado"
                                     id="selectFederadoJugador"
                                     size="1..2"
-                                    title="Selección de federado">
+                                    title="Selección de federado" required>
 
                                 <option value="SI" selected="selected">Sí</option>
                                 <option value="NO">No</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Editar</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Editar</button>
+                            </div>
                             </form>
 
 
                             <?php
-                        }else if($editando == 'miembro'){ ?>
-                            <div class="tituloInput"><button class="button">Editar</button></div>
+                        } else if ($editando == 'miembro') { ?>
+                            <div class="tituloInput">
+                                <button class="button">Editar</button>
+                            </div>
                             </form>
                             <?php
-                        }  else { ?>
+                        } else { ?>
                             <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                         <?php }
-                    } else{ ?>
+                    } else { ?>
                         <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                     <?php } ?>
 

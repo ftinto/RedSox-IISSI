@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador'){ ?>
+if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador') { ?>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,77 +21,84 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                 <?php include_once("includes/navegacionMiembros.php") ?>
                 <div class="contenedorConvertir">
 
-                    <?php if(isset($_REQUEST['dni']) && isset($_REQUEST['conversionA'])){
+                    <?php if (isset($_REQUEST['dni']) && isset($_REQUEST['conversionA'])) {
                         $dniSeleccionado = $_REQUEST['dni'];
                         $conversionA = $_REQUEST['conversionA'];
-                        if($conversionA == 'empleado'){ ?>
+                        if ($conversionA == 'empleado') { ?>
 
                             <h2 class="tituloSeccionPerfil">Convertir a Empleado:</h2>
-                            <form class="formularioConvertir aEmpleado" method="post" action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?=$dniSeleccionado ?>">
+                            <form class="formularioConvertir aEmpleado" method="post"
+                                  action="../php/phpAdmin/Miembros/conversionMiembros.php">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="empleado">
-                                <div class="tituloInput">Nombre del Puesto:</div>
-                                <input type="text" name="puesto">
+                                <div class="tituloInput" required>Nombre del Puesto:</div>
+                                <input type="text" name="puesto" required>
                                 <div class="tituloInput">Fecha de Inicio:</div>
-                                <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
+                                <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>1
                                 <div class="inputsFechaInicio">
-                                    Día: <input type="text" name="diaInicio">
-                                    Mes: <input type="text" name="mesInicio">
-                                    Año: <input type="text" name="anioInicio">
+                                    Día: <input type="text" name="diaInicio" required pattern="^[0-9]{2}$">
+                                    Mes: <input type="text" name="mesInicio" required pattern="^[0-9]{2}$">
+                                    Año: <input type="text" name="anioInicio" required pattern="^[0-9]{4}$">
                                 </div>
                                 <div class="tituloInput">Fecha de Fin</div>
                                 <div class="inputsFechaFin">
-                                    Día: <input type="text" name="diaFin">
-                                    Mes: <input type="text" name="mesFin">
-                                    Año: <input type="text" name="anioFin">
+                                    Día: <input type="text" name="diaFin" required pattern="^[0-9]{2}$"">
+                                    Mes: <input type="text" name="mesFin" required pattern="^[0-9]{2}$"">
+                                    Año: <input type="text" name="anioFin" required pattern="^[0-9]{2}$"">
                                 </div>
                                 <div class="tituloInput">Pertenece a la Directiva</div>
                                 <select
                                         name="directiva"
                                         id="selectTipoEmpleado"
                                         size="1..2"
-                                        title="Selección de tipo de empleado">
+                                        title="Selección de tipo de empleado" required>
 
                                     <option value="SI" selected="selected">Sí</option>
                                     <option value="NO">No</option>
                                 </select>
-                                <div class="tituloInput"><button class="button">Convertir</button></div>
+                                <div class="tituloInput">
+                                    <button class="button">Convertir</button>
+                                </div>
                             </form>
 
                             <?php
-                        } else if($conversionA == 'entrenador'){ ?>
+                        } else if ($conversionA == 'entrenador') { ?>
 
                             <h2 class="tituloSeccionPerfil">Convertir a Entrenador:</h2>
-                            <form class="formularioConvertir aEntrenador" method="post" action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?=$dniSeleccionado ?>">
+                            <form class="formularioConvertir aEntrenador" method="post"
+                                  action="../php/phpAdmin/Miembros/conversionMiembros.php">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="entrenador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select
                                         name="categoria"
                                         id="selectCategoriaEntrenador"
                                         size="1..3"
-                                        title="Selección de categoría de entrenador">
+                                        title="Selección de categoría de entrenador" required>
 
                                     <option value="senior" selected="selected">Senior</option>
                                     <option value="sub-21">sub-21</option>
                                     <option value="sub-19">sub-19</option>
                                 </select>
-                                <div class="tituloInput"><button class="button">Convertir</button></div>
+                                <div class="tituloInput">
+                                    <button class="button">Convertir</button>
+                                </div>
                             </form>
 
                             <?php
-                        } else if($conversionA == 'jugador'){ ?>
+                        } else if ($conversionA == 'jugador') { ?>
 
                             <h2 class="tituloSeccionPerfil">Convertir a Jugador:</h2>
-                            <form class="formularioConvertir aJugador" method="post" action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?=$dniSeleccionado ?>">
+                            <form class="formularioConvertir aJugador" method="post"
+                                  action="../php/phpAdmin/Miembros/conversionMiembros.php">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="jugador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select
                                         name="categoria"
                                         id="selectCategoriaJugador"
                                         size="1..3"
-                                        title="Selección de categoría de jugador">
+                                        title="Selección de categoría de jugador" required>
 
                                     <option value="femenino" selected="selected">femenino</option>
                                     <option value="sub-21">sub-21</option>
@@ -102,7 +109,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                         name="posicion"
                                         id="selectPosicionJugador"
                                         size="1..9"
-                                        title="Selección de posición de jugador">
+                                        title="Selección de posición de jugador" required>
 
                                     <option value="Pitcher">Pitcher</option>
                                     <option value="Catcher">Catcher</option>
@@ -119,19 +126,21 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                         name="federado"
                                         id="selectFederadoJugador"
                                         size="1..2"
-                                        title="Selección de federado">
+                                        title="Selección de federado" required>
 
                                     <option value="SI" selected="selected">Sí</option>
                                     <option value="NO">No</option>
                                 </select>
-                                <div class="tituloInput"><button class="button">Convertir</button></div>
+                                <div class="tituloInput">
+                                    <button class="button">Convertir</button>
+                                </div>
                             </form>
 
                             <?php
                         } else { ?>
                             <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                         <?php }
-                    } else{ ?>
+                    } else { ?>
                         <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                     <?php } ?>
 

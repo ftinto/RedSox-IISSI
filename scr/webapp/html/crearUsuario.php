@@ -55,7 +55,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                                     name="tipoUsuario<?= $numeroMiembro?>"
                                                     id="selectTipoUsuario<?= $numeroMiembro?>"
                                                     size="1..2"
-                                                    title="Selección de tipo de empleado">
+                                                    title="Selección de tipo de empleado" required>
 
                                                 <option value="afiliado" selected="selected">Normal</option>
                                                 <option value="administrador">Admin</option>

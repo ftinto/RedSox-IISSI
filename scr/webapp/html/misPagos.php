@@ -12,7 +12,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/pagos.css">
         <script type="text/javascript" src="../javascript/Pagos/paginacion.js"></script>
-        <title>Inicio - Red Sox</title>
+        <title>Pagos - Red Sox</title>
     </head>
     <body>
     <div class="pageContainer">

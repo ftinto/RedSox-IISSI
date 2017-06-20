@@ -66,7 +66,7 @@ function compararFechas($fecha1, $fecha2){
 
 function getStringSQLFecha($dia, $mes, $anio){
     if(!($dia=='') && !($mes=='') && !($anio=='')){
-        $res = $dia.'/'.$mes.'/'.$anio;
+        $res = $dia.''.$mes.''.$anio;
     } else {
         $res = null;
     }

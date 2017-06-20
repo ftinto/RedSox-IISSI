@@ -61,6 +61,10 @@
         $mensajeOperacion = 'Inicia sesión para acceder.';
     } else if($_REQUEST['mensajeOperacion'] == 'accesoNoPermitido'){
         $mensajeOperacion = 'No tienes permiso para acceder a esta sección.';
+    } else if($_REQUEST['mensajeOperacion'] == 'solicitudCreada'){
+        $mensajeOperacion = 'Solicitud creada correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'solicitudEliminada'){
+        $mensajeOperacion = 'Solicitud eliminada correctamente.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

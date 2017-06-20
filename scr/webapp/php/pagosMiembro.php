@@ -13,15 +13,27 @@ FROM PAGOS WHERE dni=:data");
 
 
 function filtrarPagosLiquidados($pagos){
-	$res = array();
-	$index = 0;
-	foreach($pagos as $fila){
-		if(esPagoLiquidado($fila) == 'NO'){
-			$res[$index]=$fila;
+    $res = array();
+    $index = 0;
+    foreach($pagos as $fila){
+        if(esPagoLiquidado($fila) == 'NO'){
+            $res[$index]=$fila;
             $index = $index + 1;
-		}
-	}
-	return $res;
+        }
+    }
+    return $res;
+}
+
+function filtrarPagosOtroYMensuales($pagos){
+    $res = array();
+    $index = 0;
+    foreach($pagos as $fila){
+        if(esPagoPedido($fila) == 'SI'){
+            $res[$index]=$fila;
+            $index = $index + 1;
+        }
+    }
+    return $res;
 }
 
 function ordenarPagosCronologicamente($pagosArray){
@@ -61,6 +73,21 @@ function esPagoLiquidado($pago){
 		$res = "SI";
 	}
 	return $res;
+}
+
+function esPagoPedido($pago){
+    if(is_null($pago['TIPOPAGO'])){
+        $res = "NO";
+    } else {
+        if($pago['TIPOPAGO'] == 'PEDIDO'){
+            $res = 'SI';
+        } else if($pago['TIPOPAGO'] == 'OTRO' || $pago['TIPOPAGO'] == 'MENSUAL'){
+            $res = 'NO';
+        } else{
+            $res = 'NO';
+        }
+    }
+    return $res;
 }
 
 /*

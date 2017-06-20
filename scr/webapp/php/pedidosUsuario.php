@@ -1,8 +1,9 @@
 <?php
-$dni = $_SESSION['dni'];
 require_once("pedidosMiembro.php");
-$resultado = obtenerPedidosMiembro($dni);
-$resultado = filtrarPedidosRealizados($resultado);
+$resultado = obtenerPedidos();
+$resultado = filtrarPedidosEntregados($resultado);
 $resultado = ordenarPedidosCronologicamente($resultado);
+$activos = filtrarPedidosNoActivos($resultado);
+$noEntregados = filtrarPedidosActivos($resultado);
 $numeroDePedidos =  count($resultado);
 ?>

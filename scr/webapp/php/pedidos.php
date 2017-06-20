@@ -1,10 +1,10 @@
 <?php
 
-function obtenerPedidosDeMiembro($dniMiembro) {
+function obtenerPedidos() {
     require_once ("gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("SELECT FECHALLEGADA, FECHALIMITE,PRODUCTO, PROVEEDOR, PRECIOPRODUCTO
-FROM PEDIDOS WHERE dni=:data");
+    $stmt = $conexion -> prepare("SELECT IDPEDIDO, FECHALIMITE, FECHALLEGADA, PROVEEDOR, PRODUCTO, PRECIOPRODUCTO
+FROM PEDIDOS");
     $stmt -> execute(array(':data' => $dniMiembro));
     $resultado = $stmt -> fetchAll();
     cerrarConexionBD($conexion);

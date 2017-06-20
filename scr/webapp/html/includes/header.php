@@ -1,8 +1,8 @@
 <div class="banner">
     <div class="logoRedSox">
-        <a href="index.html"> <img src="../images/logoRedSox.png" class="logoImage"> </a>
+        <a href="index.php"> <img src="../images/logoRedSox.png" class="logoImage"> </a>
     </div>
-    <a href="index.html" class="tituloBanner"> CLUB DE BÉISBOL Y SÓFBOL DE SEVILLA </a>
+    <a href="index.php" class="tituloBanner"> CLUB DE BÉISBOL Y SÓFBOL DE SEVILLA </a>
 </div>
 <div class="mainNavigator">
     <div class="menuButtons">
@@ -19,7 +19,7 @@
                 <li class="navButton">
                     Pagos
                 </li></a>
-            <a href="pedidos.html">
+            <a href="verPedidos.php">
                 <li class="navButton">
                     Pedidos
                 </li></a>

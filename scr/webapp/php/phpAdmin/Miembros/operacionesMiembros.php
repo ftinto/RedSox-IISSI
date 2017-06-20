@@ -380,10 +380,10 @@ function crearMiembro($dni, $nombre, $email, $fechaNacimiento, $direccion, $tele
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $parcheTipo = 'afiliado';
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,to_date(?,'DD/MM/YYYY'),?,?,?,?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $nombre, PDO::PARAM_STR, 4000);
-    $stmt->bindParam(3, $fechaNacimiento, PDO::PARAM_STR, 4000);
+    $stmt->bindValue(3, $fechaNacimiento, PDO::PARAM_STR);
     $stmt->bindParam(4, $email, PDO::PARAM_STR, 4000);
     $stmt->bindParam(5, $direccion, PDO::PARAM_STR, 4000);
     $stmt->bindParam(6, $telefono, PDO::PARAM_STR, 4000);

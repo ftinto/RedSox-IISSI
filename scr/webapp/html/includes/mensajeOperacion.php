@@ -45,7 +45,7 @@
         $mensajeOperacion = 'Se ha liquidado el pago correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'pagosMensualesCreados'){
         $mensajeOperacion = 'Se han creado correctamente los pagos de este mes.';
-    } else if($_REQUEST['mensajeOperacion'] == 'pagosCreado'){
+    } else if($_REQUEST['mensajeOperacion'] == 'pagoCreado'){
         $mensajeOperacion = 'El pago se ha creado correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'usuariosCreados'){
         $mensajeOperacion = 'Usuario(s) creado(s) correctamente.';

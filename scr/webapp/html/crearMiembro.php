@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador'){ ?>
+if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['tipousuario']) && $_SESSION['tipousuario'] == 'administrador') { ?>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,50 +21,51 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                 <?php include_once("includes/navegacionMiembros.php") ?>
                 <div class="contenedorConvertir">
 
-                    <?php if(isset($_REQUEST['creando'])){
+                    <?php if (isset($_REQUEST['creando'])) {
                         $creando = $_REQUEST['creando'];
                         ?>
 
-                        <h2 class="tituloSeccionPerfil">Crear <?= $creando?>:</h2>
-                        <form class="formularioCrear aMiembro" method="post" action="../php/phpAdmin/Miembros/creandoMiembros.php">
-                        <input type="hidden" name="creando" value="<?= $creando?>">
+                        <h2 class="tituloSeccionPerfil">Crear <?= $creando ?>:</h2>
+                        <form class="formularioCrear aMiembro" method="post"
+                              action="../php/phpAdmin/Miembros/creandoMiembros.php">
+                        <input type="hidden" name="creando" value="<?= $creando ?>">
 
                         <div class="tituloInput">DNI:</div>
-                        <input type="text" name="dni">
+                        <input type="text" name="dni" required>
                         <div class="tituloInput">Nombre:</div>
-                        <input type="text" name="nombre">
+                        <input type="text" name="nombre" required>
                         <div class="tituloInput">Fecha de Nacimiento:</div>
                         <div class="inputsFechaInicio">
-                            Día: <input type="text" name="diaNacimiento">
-                            Mes: <input type="text" name="mesNacimiento">
-                            Año: <input type="text" name="anioNacimiento">
+                            Día: <input type="text" name="diaNacimiento" pattern="/^[0-9]{2}$/">
+                            Mes: <input type="text" name="mesNacimiento" pattern="/^[0-9]{2}$/">
+                            Año: <input type="text" name="anioNacimiento" pattern="/^[0-9]{4}$/">
                         </div>
                         <div class="tituloInput">Email:</div>
-                        <input type="text" name="email">
+                        <input type="text" name="email"
+                               pattern="/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/">
                         <div class="tituloInput">Dirección:</div>
                         <input type="text" name="direccion">
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono">
-
+                        <input type="text" name="telefono" pattern="/^\(\+\d{2,3}\)\d{9,10}$/">
 
 
                         <?php
-                        if($creando == 'empleado'){ ?>
+                        if ($creando == 'empleado') { ?>
 
                             <div class="tituloInput">Nombre del Puesto:</div>
                             <input type="text" name="puesto">
                             <div class="tituloInput">Fecha de Inicio:</div>
                             <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
                             <div class="inputsFechaInicio">
-                                Día: <input type="text" name="diaInicio">
-                                Mes: <input type="text" name="mesInicio">
-                                Año: <input type="text" name="anioInicio">
+                                Día: <input type="text" name="diaInicio" pattern="/^[0-9]{2}$/">
+                                Mes: <input type="text" name="mesInicio" pattern="/^[0-9]{2}$/">
+                                Año: <input type="text" name="anioInicio" pattern="/^[0-9]{4}$/">
                             </div>
                             <div class="tituloInput">Fecha de Fin</div>
                             <div class="inputsFechaFin">
-                                Día: <input type="text" name="diaFin">
-                                Mes: <input type="text" name="mesFin">
-                                Año: <input type="text" name="anioFin">
+                                Día: <input type="text" name="diaFin" pattern="/^[0-9]{2}$/">
+                                Mes: <input type="text" name="mesFin" pattern="/^[0-9]{2}$/">
+                                Año: <input type="text" name="anioFin" pattern="/^[0-9]{4}$/">
                             </div>
                             <div class="tituloInput">Pertenece a la Directiva</div>
                             <select
@@ -76,11 +77,13 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                 <option value="SI" selected="selected">Sí</option>
                                 <option value="NO">No</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Crear</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Crear</button>
+                            </div>
                             </form>
 
                             <?php
-                        } else if($creando == 'entrenador'){ ?>
+                        } else if ($creando == 'entrenador') { ?>
 
                             <div class="tituloInput">Categoría:</div>
                             <select
@@ -93,12 +96,14 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                 <option value="sub-21">sub-21</option>
                                 <option value="sub-19">sub-19</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Crear</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Crear</button>
+                            </div>
                             </form>
 
 
                             <?php
-                        } else if($creando == 'jugador'){ ?>
+                        } else if ($creando == 'jugador') { ?>
 
                             <div class="tituloInput">Categoría:</div>
                             <select
@@ -138,19 +143,23 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                 <option value="SI" selected="selected">Sí</option>
                                 <option value="NO">No</option>
                             </select>
-                            <div class="tituloInput"><button class="button">Crear</button></div>
+                            <div class="tituloInput">
+                                <button class="button">Crear</button>
+                            </div>
                             </form>
 
 
                             <?php
-                        }else if($creando == 'miembro'){ ?>
-                            <div class="tituloInput"><button class="button">Crear</button></div>
+                        } else if ($creando == 'miembro') { ?>
+                            <div class="tituloInput">
+                                <button class="button">Crear</button>
+                            </div>
                             </form>
                             <?php
-                        }  else { ?>
+                        } else { ?>
                             <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                         <?php }
-                    } else{ ?>
+                    } else { ?>
                         <p class="mensajeOperacion">No se ha accedido a la página correctamente.</p>
                     <?php } ?>
 

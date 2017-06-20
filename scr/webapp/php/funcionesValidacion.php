@@ -9,6 +9,4 @@ function esInputLongitudMaxima($input, $intLongitudMaxima){
     }
     return $res;
 }
-
-
 ?>

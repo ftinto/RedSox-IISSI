@@ -29,32 +29,32 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Empleado:</h2>
                             <form class="formularioConvertir aEmpleado" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>" required>
                                 <input type="hidden" name="conversionA" value="empleado">
                                 <div class="tituloInput" required>Nombre del Puesto:</div>
                                 <input type="text" name="puesto" required>
                                 <div class="tituloInput">Fecha de Inicio:</div>
-                                <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>1
+                                <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
                                 <div class="inputsFechaInicio">
-                                    Día: <input type="text" name="diaInicio" required pattern="^[0-9]{2}$">
-                                    Mes: <input type="text" name="mesInicio" required pattern="^[0-9]{2}$">
-                                    Año: <input type="text" name="anioInicio" required pattern="^[0-9]{4}$">
+                                    Día: <input type="text" name="diaInicio" required pattern="/^[0-9]{2}$/">
+                                    Mes: <input type="text" name="mesInicio" required pattern="/^[0-9]{2}$/">
+                                    Año: <input type="text" name="anioInicio" required pattern="/^[0-9]{4}$/">
                                 </div>
                                 <div class="tituloInput">Fecha de Fin</div>
                                 <div class="inputsFechaFin">
-                                    Día: <input type="text" name="diaFin" required pattern="^[0-9]{2}$"">
-                                    Mes: <input type="text" name="mesFin" required pattern="^[0-9]{2}$"">
-                                    Año: <input type="text" name="anioFin" required pattern="^[0-9]{2}$"">
+                                    Día: <input type="text" name="diaFin" required pattern="/^[0-9]{2}$/"">
+                                    Mes: <input type="text" name="mesFin" required pattern="/^[0-9]{2}$/">
+                                    Año: <input type="text" name="anioFin" required pattern="/^[0-9]{4}$/">
                                 </div>
                                 <div class="tituloInput">Pertenece a la Directiva</div>
                                 <select
                                         name="directiva"
                                         id="selectTipoEmpleado"
                                         size="1..2"
-                                        title="Selección de tipo de empleado" required>
+                                        title="Selección de tipo de empleado">
 
-                                    <option value="SI" selected="selected">Sí</option>
-                                    <option value="NO">No</option>
+                                <option value="SI" selected="selected">Sí</option>
+                                <option value="NO">No</option>
                                 </select>
                                 <div class="tituloInput">
                                     <button class="button">Convertir</button>
@@ -67,14 +67,14 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Entrenador:</h2>
                             <form class="formularioConvertir aEntrenador" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>" required>
                                 <input type="hidden" name="conversionA" value="entrenador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select
                                         name="categoria"
                                         id="selectCategoriaEntrenador"
                                         size="1..3"
-                                        title="Selección de categoría de entrenador" required>
+                                        title="Selección de categoría de entrenador">
 
                                     <option value="senior" selected="selected">Senior</option>
                                     <option value="sub-21">sub-21</option>
@@ -91,7 +91,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Jugador:</h2>
                             <form class="formularioConvertir aJugador" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>"required>
                                 <input type="hidden" name="conversionA" value="jugador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select

@@ -20,7 +20,7 @@ function getMesFecha($fecha){
 
 function getAnoFecha($fecha){
 	$claves = preg_split("#/#", trim($fecha));
-	return $claves[2];	
+	return $claves[2];
 }
 
 function getStringMes($fecha){

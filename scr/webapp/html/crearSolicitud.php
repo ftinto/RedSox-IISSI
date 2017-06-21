@@ -32,7 +32,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                                 <input type="hidden" name="idpedido" value="<?=$idpedido?>">
                                 <p>Descripción<br>
                                     <textarea name="datosSolicitud" cols="40" rows="10"
-                                              class=""></textarea></p>
+                                              class="" required></textarea></p>
                                 ` <p><input type="submit" value="Enviar" class="button"></p>
                             </form>
                         </div>

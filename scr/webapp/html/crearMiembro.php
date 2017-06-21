@@ -36,17 +36,17 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                         <input type="text" name="nombre" required>
                         <div class="tituloInput">Fecha de Nacimiento:</div>
                         <div class="inputsFechaInicio">
-                            Día: <input type="text" name="diaNacimiento" pattern="/^[0-9]{2}$/">
-                            Mes: <input type="text" name="mesNacimiento" pattern="/^[0-9]{2}$/">
-                            Año: <input type="text" name="anioNacimiento" pattern="/^[0-9]{4}$/">
+                            Día: <input type="text" name="diaNacimiento" pattern="^[0-9]{2}$">
+                            Mes: <input type="text" name="mesNacimiento" pattern="^[0-9]{2}$">
+                            Año: <input type="text" name="anioNacimiento" pattern="^[0-9]{4}$">
                         </div>
                         <div class="tituloInput">Email:</div>
                         <input type="text" name="email"
-                               pattern="/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/">
+                               pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$">
                         <div class="tituloInput">Dirección:</div>
                         <input type="text" name="direccion">
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono" pattern="/^\(\+\d{2,3}\)\d{9,10}$/">
+                        <input type="text" name="telefono" pattern="\d{9,16}">
 
 
                         <?php
@@ -57,15 +57,15 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <div class="tituloInput">Fecha de Inicio:</div>
                             <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
                             <div class="inputsFechaInicio">
-                                Día: <input type="text" name="diaInicio" pattern="/^[0-9]{2}$/">
-                                Mes: <input type="text" name="mesInicio" pattern="/^[0-9]{2}$/">
-                                Año: <input type="text" name="anioInicio" pattern="/^[0-9]{4}$/">
+                                Día: <input type="text" name="diaInicio" pattern="^[0-9]{2}$">
+                                Mes: <input type="text" name="mesInicio" pattern="^[0-9]{2}$">
+                                Año: <input type="text" name="anioInicio" pattern="^[0-9]{4}$">
                             </div>
                             <div class="tituloInput">Fecha de Fin</div>
                             <div class="inputsFechaFin">
-                                Día: <input type="text" name="diaFin" pattern="/^[0-9]{2}$/">
-                                Mes: <input type="text" name="mesFin" pattern="/^[0-9]{2}$/">
-                                Año: <input type="text" name="anioFin" pattern="/^[0-9]{4}$/">
+                                Día: <input type="text" name="diaFin" pattern="^[0-9]{2}$">
+                                Mes: <input type="text" name="mesFin" pattern="^[0-9]{2}$">
+                                Año: <input type="text" name="anioFin" pattern="^[0-9]{4}$">
                             </div>
                             <div class="tituloInput">Pertenece a la Directiva</div>
                             <select

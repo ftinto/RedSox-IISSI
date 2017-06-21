@@ -7,14 +7,14 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/admin.css">
         <script type="text/javascript" src="../javascript/Admin/operacionesMiembros.js"></script>
-        <title>Gestión de Miembros - Red Sox</title>
+        <title>Editar Cuenta - Red Sox</title>
     </head>
     <body>
     <div class="pageContainer">
         <?php include_once("includes/header.php") ?>
         <div class="content">
             <div class="pageTitle">
-                Gestión de Miembros
+                Editar cuenta
             </div>
             <div class="contenidoInicio">
                 <?php include_once("includes/mensajeOperacion.php") ?>
@@ -51,8 +51,8 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                         <td><?= $dni?>
                                         </td>
                                         <td><?= $usuario?>
-                                            <input type="hidden" name="usuario" value="<?= $usuario?>"></td>
-                                        <td><input type="password" name="contrasena" value="<?= $contrasena?>"></td>
+                                            <input type="hidden" name="usuario" value="<?= $usuario?>" required></td>
+                                        <td><input type="password" name="contrasena" value="<?= $contrasena?>" required></td>
                                         <td>
                                             <select
                                                     name="tipoUsuario"

@@ -1,14 +1,35 @@
 <?php
 
 function obtenerMiembros() {
-	require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
-	$conexion = crearConexionBD();
-	$stmt = $conexion -> prepare("SELECT DNI, NOMBRE, FECHANACIMIENTO, EMAIL, DIRECCION, TELEFONO, TIPOMIEMBRO
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT DNI, NOMBRE, FECHANACIMIENTO, EMAIL, DIRECCION, TELEFONO, TIPOMIEMBRO
 FROM MIEMBROS");
-	$stmt -> execute();
-	$resultado = $stmt -> fetchAll();
-	cerrarConexionBD($conexion);
-	return $resultado;
+    $stmt -> execute();
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
+function obtenerMiembrosPaginados($page_num, $page_size) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = "SELECT DNI, NOMBRE, FECHANACIMIENTO, EMAIL, DIRECCION, TELEFONO, TIPOMIEMBRO FROM MIEMBROS";
+    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = $resultado -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
+function obtenerNumeroDeMiembros() {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT *
+FROM MIEMBROS");
+    $stmt -> execute();
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return count($resultado);
 }
 
 function eliminarMiembroDni($dni){

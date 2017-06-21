@@ -19,7 +19,7 @@ function cambiarPaginaSeleccionada(nuevaPagina) {
 }
 
 function introducirNavegadorPagos(numeroPagos) {
-    crearContenedorBotones()
+    crearContenedorBotones();
     var botones;
     botones = getNumerosVisibles(numeroPagos);
     var numeroBotones = botones.length;

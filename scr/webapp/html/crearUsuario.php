@@ -10,14 +10,14 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/admin.css">
         <script type="text/javascript" src="../javascript/Admin/operacionesMiembros.js"></script>
-        <title>Gestión de Miembros - Red Sox</title>
+        <title>Crear Usuario - Red Sox</title>
     </head>
     <body>
     <div class="pageContainer">
         <?php include_once("includes/header.php") ?>
         <div class="content">
             <div class="pageTitle">
-                Gestión de Miembros
+                Crear usuario
             </div>
             <div class="contenidoInicio">
                 <?php include_once("includes/mensajeOperacion.php") ?>
@@ -49,7 +49,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                             <input type="hidden" name="dni<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"required>
                                         </td>
                                         <td><input type="text" name="usuario<?= $numeroMiembro?>"pattern="^\w$"></td>
-                                        <td><input type="password" name="contrasena<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"pattern="^\w$"></td>
+                                        <td><input type="password" name="contrasena<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"pattern="^\w$" required></td>
                                         <td>
                                             <select
                                                     name="tipoUsuario<?= $numeroMiembro?>"

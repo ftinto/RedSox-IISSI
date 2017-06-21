@@ -29,7 +29,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Empleado:</h2>
                             <form class="formularioConvertir aEmpleado" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>" required>
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="empleado">
                                 <div class="tituloInput" required>Nombre del Puesto:</div>
                                 <input type="text" name="puesto" required>
@@ -67,7 +67,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Entrenador:</h2>
                             <form class="formularioConvertir aEntrenador" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>" required>
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="entrenador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select
@@ -91,7 +91,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             <h2 class="tituloSeccionPerfil">Convertir a Jugador:</h2>
                             <form class="formularioConvertir aJugador" method="post"
                                   action="../php/phpAdmin/Miembros/conversionMiembros.php">
-                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>"required>
+                                <input type="hidden" name="dni" value="<?= $dniSeleccionado ?>">
                                 <input type="hidden" name="conversionA" value="jugador">
                                 <div class="tituloInput">Categoría:</div>
                                 <select

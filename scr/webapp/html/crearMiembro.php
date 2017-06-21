@@ -36,17 +36,16 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                         <input type="text" name="nombre" required>
                         <div class="tituloInput">Fecha de Nacimiento:</div>
                         <div class="inputsFechaInicio">
-                            Día: <input type="text" name="diaNacimiento" pattern="^[0-9]{2}$">
-                            Mes: <input type="text" name="mesNacimiento" pattern="^[0-9]{2}$">
-                            Año: <input type="text" name="anioNacimiento" pattern="^[0-9]{4}$">
+                            Día: <input type="text" name="diaNacimiento" pattern="^[0-9]{2}$" required>
+                            Mes: <input type="text" name="mesNacimiento" pattern="^[0-9]{2}$" required>
+                            Año: <input type="text" name="anioNacimiento" pattern="^[0-9]{4}$" required>
                         </div>
                         <div class="tituloInput">Email:</div>
-                        <input type="text" name="email"
-                               pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$">
+                        <input type="email" name="email">
                         <div class="tituloInput">Dirección:</div>
                         <input type="text" name="direccion">
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono" pattern="\d{9,16}">
+                        <input type="text" name="telefono" pattern="^\(\+\d{2,3}\)\d{9,10}$">
 
 
                         <?php

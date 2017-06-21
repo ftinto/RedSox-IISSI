@@ -22,16 +22,47 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
             <div class="contenidoInicio">
                 <?php include_once("includes/mensajeOperacion.php") ?>
                 <?php include_once("includes/navegacionMiembros.php") ?>
+
                 <div class="contendorTablaPrincipal">
                     <table class="tablaPrincipal">
-                        <thead><tr role="row">
+                        <thead>
+
+                        <tr role="row">
+                            <th colspan="6">
+                                <form class="" style="margin: 0px">
+                                    <input type="hidden" name="viendo" value="<?= $viendo?>">
+                                    <input type="hidden" name="maximoPorPagina" value="<?= $maximoPorPagina?>">
+                                    <button class="button" name="viendo" value="miembros">Miembros</button>
+                                    <button class="button" name="viendo" value="empleados">Empleados</button>
+                                    <button class="button" name="viendo" value="entrenadores">Entrenadores</button>
+                                    <button class="button" name="viendo" value="jugadores">Jugadores</button>
+                                </form>
+                            </th>
+                        </tr>
+                        <?php
+                        if($necesitaPaginacion == 'SI'){
+                            ?>
+                            <tr role="row">
+                                <th colspan="6">
+                                    <form class="" id="navegadorGestionMiembros" style="margin: 0px">
+                                        <input type="hidden" name="viendo" value="<?= $viendo?>">
+                                        Resultados por página: <input type="number" maxlength="2" name="maximoPorPagina" value="<?= $maximoPorPagina?>">
+                                    </form>
+                                </th>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+
+                        <tr role="row">
                             <th>Nombre</th>
                             <th>DNI</th>
                             <th>Email</th>
                             <th>Teléfono</th>
                             <th>Tipo Miembro</th>
-                            <th></th>
-                        </tr> </thead>
+                            <th>Operaciones</th>
+                        </tr>
+                         </thead>
                         <tbody>
                         <?php
                         $numeroMiembro = 0;
@@ -62,6 +93,15 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                         }?>
                         </tbody>
                     </table>
+                    <?php
+                    if($necesitaPaginacion == 'SI'){
+                        ?>
+                        <script>
+                            introducirNavegadorPaginacion(<?= $paginaSeleccionada?>,<?= $maximoPorPagina?>,<?= $numeroDeMiembros?>)
+                        </script>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
                 <li class="navSelect">
                     Inicio
                 </li></a>
-            <a href="index.html">
+            <a href="partidos.php">
                 <li class="navButton">
                     Partidos
                 </li></a>

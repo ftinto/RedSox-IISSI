@@ -66,7 +66,6 @@ function getEstadoPago($pago){
 
 
 function esPagoLiquidado($pago){
-    $res = "SI";
 	if(is_null($pago['FECHALIQUIDACION'])){
 		$res = "NO";
 	} else {

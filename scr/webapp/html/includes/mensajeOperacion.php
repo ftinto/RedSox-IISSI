@@ -65,6 +65,10 @@
         $mensajeOperacion = 'Solicitud creada correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'solicitudEliminada'){
         $mensajeOperacion = 'Solicitud eliminada correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pedidoEliminado'){
+        $mensajeOperacion = 'Pedido eliminado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'pedidoCreado'){
+        $mensajeOperacion = 'Pedido creado correctamente.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

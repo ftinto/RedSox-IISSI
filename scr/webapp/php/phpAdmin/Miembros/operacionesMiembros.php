@@ -149,7 +149,7 @@ function existeCuenta($dni){
 function convertirAEmpleado($dni,$puesto,$fechaInicio,$fechaFin,$directiva){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CONVERTIR_A_EMPLEADO(?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CONVERTIR_A_EMPLEADO(?,?,to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $puesto, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $fechaInicio, PDO::PARAM_STR, 4000);
@@ -258,7 +258,7 @@ function editarEmpleado($olddni, $puesto,$fechaInicio,$fechaFin,$directiva, $nom
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $parcheIDTRABAJO = obtenerEmpleado($olddni)[0]['IDTRABAJO'];
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL EDITAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL EDITAR_EMPLEADO(?,?,?,to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?,?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $puesto, PDO::PARAM_STR, 4000);
@@ -278,7 +278,7 @@ function editarEmpleado($olddni, $puesto,$fechaInicio,$fechaFin,$directiva, $nom
 function editarEntrenador($olddni, $categoria, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL EDITAR_ENTRENADOR(?,?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL EDITAR_ENTRENADOR(?,?,?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $categoria, PDO::PARAM_STR, 4000);
@@ -294,7 +294,7 @@ function editarEntrenador($olddni, $categoria, $nombre, $email, $fechaNacimiento
 function editarJugador($olddni,$categoria, $posicion, $federado, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL EDITAR_JUGADOR(?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL EDITAR_JUGADOR(?,?,?,?,?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $categoria, PDO::PARAM_STR, 4000);
@@ -313,7 +313,7 @@ function editarMiembro($olddni, $nombre, $email, $fechaNacimiento, $direccion, $
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $parcheTipo = 'afiliado';
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,to_date(?,'DDMMYYYY'),?,?,?,?)");
     $stmt->bindParam(1, $olddni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $nombre, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $fechaNacimiento, PDO::PARAM_STR, 4000);
@@ -329,7 +329,7 @@ function editarMiembro($olddni, $nombre, $email, $fechaNacimiento, $direccion, $
 function crearEmpleado($dni, $puesto,$fechaInicio,$fechaFin,$directiva, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAR_EMPLEADO(?,?,?,?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAR_EMPLEADO(?,?,to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $puesto, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $fechaInicio, PDO::PARAM_STR, 4000);
@@ -347,7 +347,7 @@ function crearEmpleado($dni, $puesto,$fechaInicio,$fechaFin,$directiva, $nombre,
 function crearEntrenador($dni, $categoria, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAR_ENTRENADOR(?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAR_ENTRENADOR(?,?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $categoria, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $nombre, PDO::PARAM_STR, 4000);
@@ -362,7 +362,7 @@ function crearEntrenador($dni, $categoria, $nombre, $email, $fechaNacimiento, $d
 function crearJugador($dni,$categoria, $posicion, $federado, $nombre, $email, $fechaNacimiento, $direccion, $telefono){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAR_JUGADOR(?,?,?,?,?,?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAR_JUGADOR(?,?,?,?,?,?,to_date(?,'DDMMYYYY'),?,?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $categoria, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $posicion, PDO::PARAM_STR, 4000);
@@ -380,7 +380,7 @@ function crearMiembro($dni, $nombre, $email, $fechaNacimiento, $direccion, $tele
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $parcheTipo = 'afiliado';
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,to_date(?,'DD/MM/YYYY'),?,?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREAROACTUALIZARMIEMBRO(?,?,to_date(?,'DDMMYYYY'),?,?,?,?)");
     $stmt->bindParam(1, $dni, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $nombre, PDO::PARAM_STR, 4000);
     $stmt->bindValue(3, $fechaNacimiento, PDO::PARAM_STR);

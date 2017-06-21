@@ -1,5 +1,21 @@
 <?php
 
+function obtenerPagoDeSolicitud($idsolicitud){
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT FECHALIMITE, CUANTIA, FECHAINICIO, FECHALIQUIDACION, IDPAGO, DNI, TIPOPAGO, IDSOLICITUD
+FROM PAGOS WHERE IDSOLICITUD=:data");
+    $stmt -> execute(array(':data' => $idsolicitud));
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    if(count($resultado)>0){
+        return $resultado[0];
+    } else{
+        return 'noExiste';
+    }
+
+}
+
 function eliminarPago($idPago){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
@@ -63,7 +79,7 @@ function crearPagosMensuales(){
 function crearPago($fechaLimite, $cuantia, $fechaInicio, $fechaLiquidacion, $dni, $tipoPago, $idSolicitud){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion->prepare("CALL CREAR_PAGO(?,?,?,?,?,?,?)");
+    $stmt = $conexion->prepare("CALL CREAR_PAGO(?,?,to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?,?,?)");
     $stmt->bindParam(1, $fechaLimite, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $cuantia, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $fechaInicio, PDO::PARAM_STR, 4000);

@@ -23,6 +23,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                 <?php include_once("includes/mensajeOperacion.php") ?>
                 <?php include_once("includes/navegacionPedidos.php") ?>
                 <div class="contendorTablaPrincipal">
+                    <p>Pedidos Activos</p>
                     <table class="tablaPrincipal">
                         <thead><tr role="row">
                             <th>Localizador</th>
@@ -36,7 +37,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                         <tbody>
                         <?php
                         $numeroPedido = 0;
-                        foreach($resultado as $fila){?>
+                        foreach($activos as $fila){?>
                             <tr id="pedido<?=$numeroPedido?>">
                                 <td><?= $fila["IDPEDIDO"]?></td>
                                 <td><?= $fila["PRODUCTO"]?></td>
@@ -45,6 +46,49 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                 <td><?= $fila["FECHALIMITE"]?></td>
                                 <td><?= $fila["FECHALLEGADA"]?></td>
                                 <td>
+                                    <form action="verSolicitudes.php" method="post" style="display: inline-block">
+                                        <input type="hidden" name="idpedido" value="<?= $fila["IDPEDIDO"]?>">
+                                        <button class="button">Ver Solicitudes</button>
+                                    </form>
+                                    <form action="../php/phpAdmin/Pedido/eliminarPedido.php" method="post" style="display: inline-block">
+                                        <input type="hidden" name="idpedido" value="<?= $fila["IDPEDIDO"]?>">
+                                        <button class="button">Eliminar</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            <?php
+                            $numeroPedido = $numeroPedido +1;
+                        }?>
+                        </tbody>
+                    </table>
+                    <p>Pedidos Pendientes de Entregar</p>
+                    <table class="tablaPrincipal">
+                        <thead><tr role="row">
+                            <th>Localizador</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Proveedor</th>
+                            <th>Fecha Límite</th>
+                            <th>Fecha Llegada</th>
+                            <th></th>
+                        </tr> </thead>
+                        <tbody>
+                        <?php
+                        $numeroPedido = 0;
+                        foreach($noEntregados as $fila){?>
+                            <tr id="pedido<?=$numeroPedido?>">
+                                <td><?= $fila["IDPEDIDO"]?></td>
+                                <td><?= $fila["PRODUCTO"]?></td>
+                                <td><?= $fila["PRECIOPRODUCTO"]?></td>
+                                <td><?= $fila["PROVEEDOR"]?></td>
+                                <td><?= $fila["FECHALIMITE"]?></td>
+                                <td><?= $fila["FECHALLEGADA"]?></td>
+                                <td>
+                                    <form action="verSolicitudes.php" method="post" style="display: inline-block">
+                                        <input type="hidden" name="idpedido" value="<?= $fila["IDPEDIDO"]?>">
+                                        <button class="button">Ver Solicitudes</button>
+                                    </form>
 
                                 </td>
                             </tr>

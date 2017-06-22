@@ -79,7 +79,7 @@ function crearPagosMensuales(){
 function crearPago($fechaLimite, $cuantia, $fechaInicio, $fechaLiquidacion, $dni, $tipoPago, $idSolicitud){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion->prepare("CALL CREAR_PAGO(?,?,to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?,?,?)");
+    $stmt = $conexion->prepare("CALL CREAR_PAGO(?,?,to_date(?,'DD/MM/YYYY'),to_date(?,'DD/MM/YYYY'),?,?,?)");
     $stmt->bindParam(1, $fechaLimite, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $cuantia, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $fechaInicio, PDO::PARAM_STR, 4000);

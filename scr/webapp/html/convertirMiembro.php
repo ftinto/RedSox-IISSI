@@ -34,7 +34,6 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                                 <div class="tituloInput" required>Nombre del Puesto:</div>
                                 <input type="text" name="puesto" required>
                                 <div class="tituloInput">Fecha de Inicio:</div>
-                                <p style="margin-top: 0px">(dejar vacío para fecha actual)</p>
                                 <div class="inputsFechaInicio">
                                     Día: <input type="text" name="diaInicio" required pattern="^[0-9]{2}$">
                                     Mes: <input type="text" name="mesInicio" required pattern="^[0-9]{2}$">
@@ -42,9 +41,9 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                                 </div>
                                 <div class="tituloInput">Fecha de Fin</div>
                                 <div class="inputsFechaFin">
-                                    Día: <input type="text" name="diaFin" required pattern="^[0-9]{2}$"">
-                                    Mes: <input type="text" name="mesFin" required pattern="^[0-9]{2}$">
-                                    Año: <input type="text" name="anioFin" required pattern="^[0-9]{4}$">
+                                    Día: <input type="text" name="diaFin" pattern="^[0-9]{2}$"">
+                                    Mes: <input type="text" name="mesFin" pattern="^[0-9]{2}$">
+                                    Año: <input type="text" name="anioFin" pattern="^[0-9]{4}$">
                                 </div>
                                 <div class="tituloInput">Pertenece a la Directiva</div>
                                 <select

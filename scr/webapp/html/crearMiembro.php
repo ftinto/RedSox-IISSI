@@ -45,7 +45,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                         <div class="tituloInput">Dirección:</div>
                         <input type="text" name="direccion">
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono" pattern="^\(\+\d{2,3}\)\d{9,10}$">
+                        <input type="text" name="telefono" maxlength="12">
 
 
                         <?php
@@ -111,7 +111,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                                     size="1..3"
                                     title="Selección de categoría de jugador">
 
-                                <option value="femenino" selected="selected">femenino</option>
+                                <option value="senior" selected="selected">Senior</option>
                                 <option value="sub-21">sub-21</option>
                                 <option value="sub-19">sub-19</option>
                             </select>

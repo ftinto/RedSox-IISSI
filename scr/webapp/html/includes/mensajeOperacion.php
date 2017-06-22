@@ -69,6 +69,26 @@
         $mensajeOperacion = 'Pedido eliminado correctamente.';
     } else if($_REQUEST['mensajeOperacion'] == 'pedidoCreado'){
         $mensajeOperacion = 'Pedido creado correctamente.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionDNI'){
+        $mensajeOperacion = 'Debes introducir un dni o nie con un formato válido.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionFechaInicio'){
+        $mensajeOperacion = 'Debes introducir una fecha de inicio válida.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionFechaFin'){
+        $mensajeOperacion = 'Si introduces una fecha de fin, esta tiene que tener un formato válido.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionFechaInicioFin'){
+        $mensajeOperacion = 'La fecha de inicio introducida no puede ser posterior a la de fin.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionPuesto'){
+        $mensajeOperacion = 'El puesto no puede tener más de 25 caracteres.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionNombre'){
+        $mensajeOperacion = 'El nombre no puede tener más de 50 caracteres.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionDireccion'){
+        $mensajeOperacion = 'La direccion no puede tener más de 80 caracteres.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionEmail'){
+        $mensajeOperacion = 'El email introducido no tiene un formato correcto.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionTelefono'){
+        $mensajeOperacion = 'El telefono introducido no tiene un formato correcto.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionFechaNacimiento'){
+        $mensajeOperacion = 'La fecha de nacimiento introducida no tiene un formato correcto.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

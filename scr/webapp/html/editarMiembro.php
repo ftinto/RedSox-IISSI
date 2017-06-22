@@ -41,12 +41,11 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                             Año: <input type="text" name="anioNacimiento" required pattern="^\d{4}$">
                         </div>
                         <div class="tituloInput">Email:</div>
-                        <input type="text" name="email" required
-                               pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$">
+                        <input type="email" name="email" >
                         <div class="tituloInput">Dirección:</div>
-                        <input type="text" name="direccion" required>
+                        <input type="text" name="direccion">
                         <div class="tituloInput">Telefono:</div>
-                        <input type="text" name="telefono" required pattern="^(\+\d{2,3}\)\d{9,10}$">
+                        <input type="text" name="telefono" >
 
 
                         <?php
@@ -112,7 +111,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['t
                                     size="1..3"
                                     title="Selección de categoría de jugador" required>
 
-                                <option value="femenino" selected="selected">femenino</option>
+                                <option value="senior" selected="selected">Senior</option>
                                 <option value="sub-21">sub-21</option>
                                 <option value="sub-19">sub-19</option>
                             </select>

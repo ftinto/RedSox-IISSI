@@ -29,7 +29,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                         <form class="formularioConvertir crearPago" method="post" action="../php/phpAdmin/Pagos/creandoPago.php">
                             <input type="hidden" name="dni" value="<?=$dniSeleccionado ?>">
                             <div class="tituloInput"aria-required="true">Cuantía:</div>
-                            <input type="number" name="cuantia">
+                            <input type="number" name="cuantia" required>
                             <div class="tituloInput"aria-required="true">Fecha Límite:</div>
                             <div class="inputsFechaInicio">
                                 Día: <input type="text" name="diaLimite" required pattern="^[0-9]{2}$">

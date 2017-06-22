@@ -46,10 +46,10 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                         <td><?= $fila["NOMBRE"]?>
                                         </td>
                                         <td><?= $fila["DNI"]?>
-                                            <input type="hidden" name="dni<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"required>
+                                            <input type="hidden" name="dni<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>">
                                         </td>
-                                        <td><input type="text" name="usuario<?= $numeroMiembro?>"pattern="^\w$"></td>
-                                        <td><input type="password" name="contrasena<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"pattern="^\w$" required></td>
+                                        <td><input type="text" name="usuario<?= $numeroMiembro?>"></td>
+                                        <td><input type="password" name="contrasena<?= $numeroMiembro?>" value="<?= $fila["DNI"]?>"></td>
                                         <td>
                                             <select
                                                     name="tipoUsuario<?= $numeroMiembro?>"

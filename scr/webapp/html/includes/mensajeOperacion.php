@@ -89,6 +89,12 @@
         $mensajeOperacion = 'El telefono introducido no tiene un formato correcto.';
     } else if($_REQUEST['mensajeOperacion'] == 'validacionFechaNacimiento'){
         $mensajeOperacion = 'La fecha de nacimiento introducida no tiene un formato correcto.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionUsuario'){
+        $mensajeOperacion = 'El usuario introducido no sigue un formato alfanumérico, excede el máximo de caracteres o ya existe.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionContrasena'){
+        $mensajeOperacion = 'La contraseña introducida no sigue un formato correcto o es demasiado corta.';
+    } else if($_REQUEST['mensajeOperacion'] == 'validacionTipoUsuario'){
+        $mensajeOperacion = 'Ha ocurrido un problema con la selección del tipo de usuario.';
     } else{
         $mensajeOperacion = 'Mensaje sin definir recibido.';
     }

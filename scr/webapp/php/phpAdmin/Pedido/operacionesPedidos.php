@@ -36,7 +36,7 @@ FROM SOLICITUDES WHERE IDPEDIDO=:data");
 function crearPedido($producto, $precio, $fechaLimite, $fechaLlegada, $proveedor){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
-    $stmt = $conexion -> prepare("CALL CREARPEDIDO(to_date(?,'DDMMYYYY'),to_date(?,'DDMMYYYY'),?,?,?)");
+    $stmt = $conexion -> prepare("CALL CREARPEDIDO(to_date(?,'DD/MM/YYYY'),to_date(?,'DD/MM/YYYY'),?,?,?)");
     $stmt->bindParam(1, $fechaLlegada, PDO::PARAM_STR, 4000);
     $stmt->bindParam(2, $fechaLimite, PDO::PARAM_STR, 4000);
     $stmt->bindParam(3, $producto, PDO::PARAM_STR, 4000);

@@ -48,7 +48,7 @@ $necesitaPaginacion = 'NO';
 
 
 if(isset($_REQUEST['paginaSeleccionada'])){
-    $paginaMaxima = (($numeroDeMiembros - (($numeroDeMiembros) % ($maximoPorPagina))) / $maximoPorPagina) + 1;
+    $paginaMaxima = ($numeroDeMiembros / $maximoPorPagina) + (((($maximoPorPagina)-($numeroDeMiembros%$maximoPorPagina))%($maximoPorPagina))/($maximoPorPagina));
     if((esInputTodoNumerico($_REQUEST['paginaSeleccionada'])=='SI')&&(esInputNumeroMayorQue($_REQUEST['paginaSeleccionada'],$paginaMaxima)=='NO')){
         $paginaSeleccionada = $_REQUEST['paginaSeleccionada'];
     } else {
@@ -70,8 +70,5 @@ if($viendo == 'empleados'){
 } else {
     $resultado = obtenerMiembrosPaginados($paginaSeleccionada, $maximoPorPagina);
 }
-
-
-
 
 ?>

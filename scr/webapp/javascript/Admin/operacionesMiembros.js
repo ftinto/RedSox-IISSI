@@ -200,7 +200,7 @@ function introducirBotonNavegacion(numeroBoton, ultimoBoton, paginaSeleccionada)
 
 function getNumerosVisibles(numeroDatos, maximoPorPagina, paginaSeleccionada) {
     var res;
-    var numeroPaginas = ((numeroDatos - ((numeroDatos) % (maximoPorPagina))) / maximoPorPagina) + 1;
+    var numeroPaginas = (numeroDatos / maximoPorPagina) + ((((maximoPorPagina)-(numeroDatos%maximoPorPagina))%(maximoPorPagina))/(maximoPorPagina));
     if (numeroPaginas < 6) {
         res = new Array(numeroPaginas);
         for (i = 0; i < numeroPaginas; i++) {

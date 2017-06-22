@@ -8,7 +8,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/admin.css">
-        <script type="text/javascript" src="../javascript/Admin/operacionesMiembros.js"></script>
+        <script type="text/javascript" src="../javascript/Admin/operacionesPedidos.js"></script>
         <title>Gestión de Pedidos - Red Sox</title>
     </head>
     <body>
@@ -26,7 +26,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                 if(isset($_REQUEST['idpedido'])){
                     require_once ("../php/phpAdmin/Pedido/operacionesPedidos.php");
                     require_once ("../php/pedidosMiembro.php");
-                    $resultado = obtenerSolicitudesDePedido($_REQUEST['idpedido']);
+                    require_once ("../php/phpAdmin/Pedido/consultaSolicitudes.php");
                     if(count($resultado)>0){
 
                         $pedidosAsociados = obtenerPedidosDeSolicitudes($resultado);
@@ -37,7 +37,24 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                         <p>Solicitudes del pedido de <?= $pedidosAsociados[0]['PRODUCTO']?> de localizador <?= $pedidosAsociados[0]['IDPEDIDO']?></p>
                         <div class="contendorTablaPrincipal">
                             <table class="tablaPrincipal">
-                                <thead><tr role="row">
+                                <thead>
+
+                                <?php
+                                if($necesitaPaginacion == 'SI'){
+                                    ?>
+                                    <tr role="row">
+                                        <th colspan="6">
+                                            <form class="" id="navegadorGestionSolicitudes" style="margin: 0px">
+                                                <input type="hidden" name="idpedido" value="<?= $_REQUEST['idpedido']?>">
+                                                Resultados por página: <input type="number" maxlength="3" name="maximoPorPagina" value="<?= $maximoPorPagina?>">
+                                            </form>
+                                        </th>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+
+                                <tr role="row">
                                     <th>Localizador</th>
                                     <th>Miembro</th>
                                     <th>DNI</th>
@@ -132,6 +149,15 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
                                 }?>
                                 </tbody>
                             </table>
+                            <?php
+                            if($necesitaPaginacion == 'SI'){
+                                ?>
+                                <script>
+                                    introducirNavegadorPaginacion(<?= $paginaSeleccionada?>,<?= $maximoPorPagina?>,<?= $numeroDeSolicitudes?>)
+                                </script>
+                                <?php
+                            }
+                            ?>
                         </div>
                      <?php
                     } else { ?>

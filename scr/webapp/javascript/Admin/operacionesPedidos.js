@@ -1,52 +1,31 @@
-var paginaSeleccionada = 1;
-var maximoPorPagina = 10;
-var numeroPagosSolicitados = 32;
-
-function paginacionPagos(numeroPagos) {
-    if(numeroPagos > maximoPorPagina){
-        numeroPagosSolicitados = numeroPagos;
-        introducirNavegadorPagos(numeroPagosSolicitados);
-        mostrarSoloPagina(numeroPagosSolicitados);
-    }
-}
-
-function cambiarPaginaSeleccionada(nuevaPagina) {
-    paginaSeleccionada = nuevaPagina;
-    contenedor = document.getElementById('pagosContent').firstElementChild;
-    document.getElementById('pagosContent').removeChild(contenedor);
-    introducirNavegadorPagos(numeroPagosSolicitados);
-    mostrarSoloPagina(numeroPagosSolicitados);
-}
-
-function introducirNavegadorPagos(numeroPagos) {
-    crearContenedorBotones();
+function introducirNavegadorPaginacion(pagina,maximoPorPagina,numeroSolicitudes) {
+    var contenedor = document.getElementById("navegadorGestionSolicitudes");
+    var button = null;
+    button = document.createElement("span");
+    button.className = 'suspensivosPaginacion';
+    var node = document.createTextNode(' Selecciona la página: ');
+    button.appendChild(node);
+    contenedor.appendChild(button);
     var botones;
-    botones = getNumerosVisibles(numeroPagos);
+    botones = getNumerosVisibles(numeroSolicitudes,maximoPorPagina,pagina);
     var numeroBotones = botones.length;
     var ultimoBoton = botones[numeroBotones-1];
     for(i=0;i<numeroBotones;i++){
-        introducirBotonNavegacion(botones[i], ultimoBoton)
+        introducirBotonNavegacion(botones[i], ultimoBoton, pagina)
     }
 }
 
-function crearContenedorBotones(){
-    var contenedor = document.createElement("div");
-    contenedor.className = 'seleccionPaginacion';
-    var element = document.getElementById("pagosContent");
-    var pagos = element.firstElementChild;
-    element.insertBefore(contenedor, pagos);
-}
-
-function introducirBotonNavegacion(numeroBoton, ultimoBoton){
-    var contenedor = document.getElementById("pagosContent").firstElementChild;
+function introducirBotonNavegacion(numeroBoton, ultimoBoton, paginaSeleccionada){
+    var contenedor = document.getElementById("navegadorGestionSolicitudes");
     var button = null;
     if(numeroBoton == paginaSeleccionada){
         button = document.createElement("button");
         button.className = 'botonPaginacionSeleccionado button';
+        button.setAttribute("name","paginaSeleccionada");
+        button.setAttribute("value",numeroBoton);
         /*button.addEventListener("click", function(){
-            cambiarPaginaSeleccionada(numeroBoton);
-        }, false);*/
-        button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
+         cambiarPaginaSeleccionada(numeroBoton);
+         }, false);*/
         var node = document.createTextNode(numeroBoton);
         button.appendChild(node);
         contenedor.appendChild(button);
@@ -60,21 +39,24 @@ function introducirBotonNavegacion(numeroBoton, ultimoBoton){
         } else if(numeroBoton == 1){
             button = document.createElement("button");
             button.className = 'botonPaginacion button';
-            button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
+            button.setAttribute("name","paginaSeleccionada");
+            button.setAttribute("value",numeroBoton);
             var node = document.createTextNode('Primera Página');
             button.appendChild(node);
             contenedor.appendChild(button);
         } else if(numeroBoton == ultimoBoton){
             button = document.createElement("button");
             button.className = 'botonPaginacion button';
-            button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
+            button.setAttribute("name","paginaSeleccionada");
+            button.setAttribute("value",numeroBoton);
             var node = document.createTextNode('Última Página');
             button.appendChild(node);
             contenedor.appendChild(button);
         } else if(numeroBoton != 0){
             button = document.createElement("button");
             button.className = 'botonPaginacion button';
-            button.onclick = function() { cambiarPaginaSeleccionada(numeroBoton); };
+            button.setAttribute("name","paginaSeleccionada");
+            button.setAttribute("value",numeroBoton);
             var node = document.createTextNode(numeroBoton);
             button.appendChild(node);
             contenedor.appendChild(button);
@@ -82,26 +64,9 @@ function introducirBotonNavegacion(numeroBoton, ultimoBoton){
     }
 }
 
-function mostrarSoloPagina(numeroPagos) {
-    var primerPago;
-    primerPago = maximoPorPagina*(paginaSeleccionada-1);
-    var ultimoPago;
-    ultimoPago = primerPago + maximoPorPagina -1;
-    for(i=0;i<numeroPagos;i++){
-        var identificador = null;
-        identificador = "pago"+i;
-        if(i>=primerPago && i<=ultimoPago){
-            document.getElementById(identificador).style.display = '';
-        } else {
-            document.getElementById(identificador).style.display = 'none';
-        }
-    }
-}
-
-
-function getNumerosVisibles(numeroPagos) {
+function getNumerosVisibles(numeroDatos, maximoPorPagina, paginaSeleccionada) {
     var res;
-    var numeroPaginas = (numeroPagos / maximoPorPagina) + ((((maximoPorPagina)-(numeroPagos%maximoPorPagina))%(maximoPorPagina))/(maximoPorPagina));
+    var numeroPaginas = (numeroDatos / maximoPorPagina) + ((((maximoPorPagina)-(numeroDatos%maximoPorPagina))%(maximoPorPagina))/(maximoPorPagina));
     if (numeroPaginas < 6) {
         res = new Array(numeroPaginas);
         for (i = 0; i < numeroPaginas; i++) {

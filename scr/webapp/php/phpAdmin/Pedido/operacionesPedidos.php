@@ -11,6 +11,28 @@ FROM SOLICITUDES WHERE IDPEDIDO=:data");
     return $resultado;
 }
 
+function obtenerSolicitudesDePedidoPaginado($idpedido,$page_num, $page_size) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = "SELECT IDSOLICITUD, IDPEDIDO, DATOS
+FROM SOLICITUDES WHERE IDPEDIDO=".$idpedido;
+    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = $resultado -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
+function obtenerNumeroDeSolicitudesDePedido($idpedido) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT *
+FROM SOLICITUDES WHERE IDPEDIDO=:data");
+    $stmt -> execute(array(':data' => $idpedido));
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return count($resultado);
+}
+
 function crearPedido($producto, $precio, $fechaLimite, $fechaLlegada, $proveedor){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();

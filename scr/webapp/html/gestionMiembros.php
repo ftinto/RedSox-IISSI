@@ -22,7 +22,6 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['dni']) && isset($_SESSION['ti
             <div class="contenidoInicio">
                 <?php include_once("includes/mensajeOperacion.php") ?>
                 <?php include_once("includes/navegacionMiembros.php") ?>
-
                 <div class="contendorTablaPrincipal">
                     <table class="tablaPrincipal">
                         <thead>

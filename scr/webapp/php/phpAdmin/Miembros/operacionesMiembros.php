@@ -21,6 +21,36 @@ function obtenerMiembrosPaginados($page_num, $page_size) {
     return $resultado;
 }
 
+function obtenerEmpleadosPaginados($page_num, $page_size) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = "SELECT DNI FROM EMPLEADOS";
+    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = $resultado -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
+function obtenerJugadoresPaginados($page_num, $page_size) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = "SELECT DNI FROM JUGADORES";
+    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = $resultado -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
+function obtenerEntrenadoresPaginados($page_num, $page_size) {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = "SELECT DNI FROM ENTRENADORES";
+    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = $resultado -> fetchAll();
+    cerrarConexionBD($conexion);
+    return $resultado;
+}
+
 function obtenerNumeroDeMiembros() {
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
@@ -31,6 +61,75 @@ FROM MIEMBROS");
     cerrarConexionBD($conexion);
     return count($resultado);
 }
+
+function obtenerNumeroDeEmpleados() {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT *
+FROM EMPLEADOS");
+    $stmt -> execute();
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return count($resultado);
+}
+
+function obtenerNumeroDeJugadores() {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT *
+FROM JUGADORES");
+    $stmt -> execute();
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return count($resultado);
+}
+
+function obtenerNumeroDeEntrenadores() {
+    require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
+    $conexion = crearConexionBD();
+    $stmt = $conexion -> prepare("SELECT *
+FROM ENTRENADORES");
+    $stmt -> execute();
+    $resultado = $stmt -> fetchAll();
+    cerrarConexionBD($conexion);
+    return count($resultado);
+}
+
+function obtenerMiembrosDeEmpleados($empleados){
+    $res = array();
+    $index = 0;
+    foreach($empleados as $fila){
+        $miembro = obtenerMiembro($fila['DNI']);
+        $res[$index]=$miembro[0];
+        $index = $index + 1;
+    }
+    return $res;
+}
+
+function obtenerMiembrosDeJugadores($jugadores){
+    $res = array();
+    $index = 0;
+    foreach($jugadores as $fila){
+        $miembro = obtenerMiembro($fila['DNI']);
+        $res[$index]=$miembro[0];
+        $index = $index + 1;
+    }
+    return $res;
+}
+
+function obtenerMiembrosDeEntrenadores($entrenadores){
+    $res = array();
+    $index = 0;
+    foreach($entrenadores as $fila){
+        $miembro = obtenerMiembro($fila['DNI']);
+        $res[$index]=$miembro[0];
+        $index = $index + 1;
+    }
+    return $res;
+}
+
+
+
 
 function eliminarMiembroDni($dni){
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");

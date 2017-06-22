@@ -22,7 +22,7 @@ function cerrarConexionBD($conexion){
 	$conexion=null;
 }
 
-function consulta_paginada( $conn, $query, $pag_num, $pag_size )
+function consultaPaginada( $conn, $query, $pag_num, $pag_size )
 {
     try {
         $primera = ( $pag_num - 1 ) * $pag_size + 1;
@@ -46,7 +46,7 @@ function consulta_paginada( $conn, $query, $pag_num, $pag_size )
     }
 }
 
-function total_consulta( $conn, $query )
+function totalConsulta( $conn, $query )
 {
     try {
         $total_consulta = "SELECT COUNT(*) AS TOTAL FROM ($query)";

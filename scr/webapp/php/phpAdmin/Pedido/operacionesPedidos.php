@@ -16,7 +16,7 @@ function obtenerSolicitudesDePedidoPaginado($idpedido,$page_num, $page_size) {
     $conexion = crearConexionBD();
     $stmt = "SELECT IDSOLICITUD, IDPEDIDO, DATOS
 FROM SOLICITUDES WHERE IDPEDIDO=".$idpedido;
-    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = consultaPaginada($conexion,$stmt,$page_num,$page_size);
     $resultado = $resultado -> fetchAll();
     cerrarConexionBD($conexion);
     return $resultado;

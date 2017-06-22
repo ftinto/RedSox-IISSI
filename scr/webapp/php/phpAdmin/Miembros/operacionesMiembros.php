@@ -15,7 +15,7 @@ function obtenerMiembrosPaginados($page_num, $page_size) {
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
     $stmt = "SELECT DNI, NOMBRE, FECHANACIMIENTO, EMAIL, DIRECCION, TELEFONO, TIPOMIEMBRO FROM MIEMBROS";
-    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = consultaPaginada($conexion,$stmt,$page_num,$page_size);
     $resultado = $resultado -> fetchAll();
     cerrarConexionBD($conexion);
     return $resultado;
@@ -25,7 +25,7 @@ function obtenerEmpleadosPaginados($page_num, $page_size) {
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
     $stmt = "SELECT DNI FROM EMPLEADOS";
-    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = consultaPaginada($conexion,$stmt,$page_num,$page_size);
     $resultado = $resultado -> fetchAll();
     cerrarConexionBD($conexion);
     return $resultado;
@@ -35,7 +35,7 @@ function obtenerJugadoresPaginados($page_num, $page_size) {
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
     $stmt = "SELECT DNI FROM JUGADORES";
-    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = consultaPaginada($conexion,$stmt,$page_num,$page_size);
     $resultado = $resultado -> fetchAll();
     cerrarConexionBD($conexion);
     return $resultado;
@@ -45,7 +45,7 @@ function obtenerEntrenadoresPaginados($page_num, $page_size) {
     require_once (dirname(dirname(dirname(__FILE__)))."\gestionBD.php");
     $conexion = crearConexionBD();
     $stmt = "SELECT DNI FROM ENTRENADORES";
-    $resultado = consulta_paginada($conexion,$stmt,$page_num,$page_size);
+    $resultado = consultaPaginada($conexion,$stmt,$page_num,$page_size);
     $resultado = $resultado -> fetchAll();
     cerrarConexionBD($conexion);
     return $resultado;

@@ -31,28 +31,14 @@ require_once("../php/gestionBD.php");
 </head>
 <body>
 <div class="pageContainer">
-    <div class="banner">
-        <div class="logoRedSox">
-            <a href="index.html">
-                <img src="../images/logoRedSox.png" class="logoImage">
-            </a>
-        </div>
-        <a href="index.html" class="tituloBanner">
-            CLUB DE BÉISBOL Y SÓFBOL DE SEVILLA
-        </a>
-    </div>
-    <div class="mainNavigator">
-	<?php
-	include_once("includes/header.php");
-	?>
-    </div>
+    <?php include_once("includes/header.php") ?>
     <div class="content">
         <div class="pageTitle">
             Crear partido
         </div>
         <div class="contenidoInicio">
             <?php include_once("includes/mensajeOperacion.php") ?>
-            <?php include_once("includes/navegacionMiembros.php") ?>
+            <?php include_once("includes/navegacionPartidos.php") ?>
             <div class="contenedorConvertir">
 
                 

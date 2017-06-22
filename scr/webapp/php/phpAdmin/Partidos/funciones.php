@@ -20,7 +20,7 @@ function crearConvocatoria($jugadores,$id,$conexion){
 	
 }
 function crearPartido($rival,$fecha,$categoria,$conexion){
-	$conexion->query("CALL CREAR_PARTIDO('$rival',to_Date('$fecha','DDMMYYYY'),null,'$categoria')");
+	$conexion->query("CALL CREAR_PARTIDO('$rival',to_Date('$fecha','DD/MM/YYYY'),null,'$categoria')");
 	
 }
 function validarPartido($rival,$fecha,$categoria){
